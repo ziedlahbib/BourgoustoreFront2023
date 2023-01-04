@@ -1,0 +1,37 @@
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> 
+
+<div id="main">
+  <div id="menu">
+    <div *ngFor="let a of cartItem" id="baniere_gauche" >
+      <p-divider align="left" type="dashed">
+          <b>{{a.title}}</b>
+      </p-divider>
+      <div>
+          <div style="float: left;">
+              <img src="assets/images.png" height="90px"
+              width="90px">
+          </div>
+          <div>
+              <p>{{a.alt}}
+              </p>
+          </div>
+          <div >
+              prix: {{a.prix}}
+          </div>
+      </div>
+      <p-divider type="dashed">
+      </p-divider>
+  </div>
+  </div>
+ 
+  <div id="contenu">
+    <div class="card " >
+      <div class="card-body">
+        <h5 class="card-title">Prix Total :{{prixtotal}}</h5>
+        <h6 class="card-subtitle mb-2 text-muted" *ngFor="let a of cartItem">{{a.title}} </h6>
+        <button type="button" class="btn btn-secondary" (click)="dialoggg()">acheter</button>
+        <button type="button" class="btn btn-warning" (click)="delete()">annuler</button>
+      </div>
+    </div>
+  </div>
+ </div>

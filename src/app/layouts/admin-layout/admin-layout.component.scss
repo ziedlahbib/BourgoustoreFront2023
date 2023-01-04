@@ -1,0 +1,49 @@
+
+div {
+ 
+    text-align:center;
+ 
+    }
+ 
+div#menu {
+ 
+    float:left;
+ 
+    width:200px;
+ 
+    height:400px;
+ 
+
+ 
+    }
+ 
+div#contenu {
+ 
+    float:left;
+
+    }
+ 
+div#pied_page {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 2.5rem; 
+    
+
+ 
+    }
+    .divide{
+        float: left;
+        color: #555;
+        height: 57px;
+      
+    }
+    #openNav{
+        height: 57px;
+    }
+    #closeNav{
+        height: 57px;
+        display: none;
+        
+    }
+    /////////////////////////////////////////
