@@ -1,13 +1,14 @@
 import { HttpEventType, HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import {  FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Article } from 'app/model/article.model';
-import { Categorie } from 'app/model/categorie';
-import { FileDBTrip } from 'app/model/file-dbtrip.model';
-import { Type } from 'app/model/type';
-import { ArticleServiceService } from 'app/service/article-service.service';
+
 import { Observable } from 'rxjs';
+import { Article } from 'src/app/model/article.model';
+import { Categorie } from 'src/app/model/categorie';
+import { FileDB } from 'src/app/model/file-db.model';
+import { Type } from 'src/app/model/type';
+import { ArticleServiceService } from 'src/app/service/article-service.service';
 
 @Component({
   selector: 'app-ajout-article',
@@ -16,19 +17,19 @@ import { Observable } from 'rxjs';
 })
 export class AjoutArticleComponent implements OnInit {
 
-  public articleform: UntypedFormGroup;
-  listfile:FileDBTrip[];
-  selectedFiles: FileList;
-  currentFile: File;
+  public articleform: FormGroup;
+  listfile:FileDB[];
+  selectedFiles: FileList ;
+  currentFile: any;
   progress = 0;
   message = '';
   article:Article;
   fileInfos: Observable<any>;
-  file: FileDBTrip;
+  file: FileDB;
   id:number;
   type=Type;
   categorie=Categorie;
-  constructor(private articleservice :ArticleServiceService,private formBuilder: UntypedFormBuilder,private router:Router) { }
+  constructor(private articleservice :ArticleServiceService,private formBuilder: FormBuilder,private router:Router) { }
 
   ngOnInit(): void {
     this.initForm()
@@ -69,40 +70,36 @@ ajouter(){
   
 }
 
-selectFile(event) {
-this.selectedFiles = event.target.files;
+selectFile(event:any) {
+  this.selectedFiles = event.target.files;
 }
 
-upload() :FileDBTrip{
-this.progress = 0;
-this.currentFile = this.selectedFiles.item(0);
-this.articleservice.upload(this.currentFile).subscribe(
-  event => {
-    if (event.type === HttpEventType.UploadProgress) {
-      this.progress = Math.round(100 * event.loaded / event.total);
-    } else if (event instanceof HttpResponse) {
-      this.message = event.body.message;
-      this.articleservice.getFilesdetail(event.body).subscribe(
-        data=>{
-          this.file=data;
-          console.log('file',this.file)
-                 
-          
-        }
-      );
-
+upload() :FileDB{
+  this.currentFile = this.selectedFiles.item(0);
+  console.log(this.selectedFiles)
+  console.log(this.currentFile)
+  this.articleservice.upload(this.currentFile).subscribe(
+  
+    event => {
+      
+               console.log("file",event)
+      
+        this.articleservice.getFilesdetail(event).subscribe(
+          data=>{
+            this.file=data;
+            console.log('file',this.file)
+                   
+            
+          }
+        );
+  
+      
     }
-  },
-  err => {
-    this.progress = 0;
-    this.message = 'Could not upload the file!';
-    this.currentFile = undefined;
-  });
-this.selectedFiles = undefined;
-return this.file;
+   );
+  return this.file;
 }
 
-supprimer(file :FileDBTrip){
+supprimer(file :FileDB){
 
 this.listfile.splice(this.listfile.indexOf(file),1)
 }

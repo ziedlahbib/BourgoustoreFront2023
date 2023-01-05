@@ -18,6 +18,8 @@ import { MatTableDataSource,MatTableModule } from '@angular/material/table';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatInputModule} from '@angular/material/input';
+import { AjoutArticleComponent } from 'src/app/pages/article-managment/ajout-article/ajout-article.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -31,12 +33,15 @@ import {MatInputModule} from '@angular/material/input';
     NavbarBackComponent,
     BackofficeComponent,
     FooterBackComponent,
-    ArticleManagmentComponent
+    ArticleManagmentComponent,
+    AjoutArticleComponent
     
   ],
   imports: [
     CommonModule,
     AdminLayoutRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
     SlideMenuModule,
     ButtonModule,
     MenubarModule,
