@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {AccordionModule} from 'primeng/accordion';     //accordion and accordion tab
 import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -30,6 +31,7 @@ import { RouterModule } from '@angular/router';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     NgbModule,
     AccordionModule,
     RouterModule.forRoot(routes,{

@@ -13,6 +13,11 @@ import {MenuModule} from 'primeng/menu';
 import { ChipModule } from 'primeng/chip';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { FooterBackComponent } from 'src/app/Component/back/footer-back/footer-back.component';
+import { ArticleManagmentComponent } from 'src/app/pages/article-managment/article-managment.component';
+import { MatTableDataSource,MatTableModule } from '@angular/material/table';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatInputModule} from '@angular/material/input';
 
 
 
@@ -25,7 +30,8 @@ import { FooterBackComponent } from 'src/app/Component/back/footer-back/footer-b
     SidenavComponent,
     NavbarBackComponent,
     BackofficeComponent,
-    FooterBackComponent
+    FooterBackComponent,
+    ArticleManagmentComponent
     
   ],
   imports: [
@@ -36,7 +42,12 @@ import { FooterBackComponent } from 'src/app/Component/back/footer-back/footer-b
     MenubarModule,
     MenuModule,
     ChipModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatTableModule,
+    MatFormFieldModule,
+    MatPaginatorModule,
+    MatInputModule
+    
     
   ]
 })

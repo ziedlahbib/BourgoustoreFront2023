@@ -1,0 +1,58 @@
+<div style="margin: 15px;">
+    <form [formGroup]="articleform">
+      <div class="form-group row">
+        <label for="example-text-input" class="col-2 col-form-label">name</label>
+        <div class="col-10">
+          <input class="form-control" type="text"   formControlName="name">
+         <div *ngIf="  articleform.get('name').hasError('required')" style="color: red;"><a style="font-weight: bold;">&#x2022;</a> required</div>
+        </div>
+      </div>
+        <div class="form-group row">
+        <label for="example-text-input" class="col-2 col-form-label">description</label>
+        <div class="col-10">
+          <input class="form-control" type="text"   formControlName="description">
+         <div *ngIf="  articleform.get('description').hasError('required')" style="color: red;"><a style="font-weight: bold;">&#x2022;</a> required</div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="example-text-input" class="col-2 col-form-label">prix</label>
+        <div class="col-10">
+          <input class="form-control" type="text"   formControlName="prix">
+         <div *ngIf="  articleform.get('prix').hasError('required')" style="color: red;"><a style="font-weight: bold;">&#x2022;</a> required</div>
+         <div *ngIf="  articleform.get('prix').hasError('pattern')" style="color: red;"><a style="font-weight: bold;">&#x2022;</a> must a number example 99.99</div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="example-search-input" class="col-2 col-form-label">categorie</label>
+        <div>
+          <select id="categorie" formControlName="categorie">
+            <option [value]="null">Select one...</option>
+            <option *ngFor="let c of categorie | keyvalue" [value]="c.value">{{c.value}}</option>
+            
+          </select>
+          <div *ngIf="  articleform.get('categorie').hasError('required')" style="color: red;"><a style="font-weight: bold;">&#x2022;</a> required</div>
+        </div>
+
+      </div>
+      <div class="form-group row">
+        <label for="example-search-input" class="col-2 col-form-label">type</label>
+        <div>
+          <select id="type" formControlName="type">
+            <option [value]="null">Select one...</option>
+            <option *ngFor="let t of type | keyvalue" [value]="t.value">{{t.value}}</option>
+            
+        </select>
+        <div *ngIf="  articleform.get('type').hasError('required')" style="color: red;"><a style="font-weight: bold;">&#x2022;</a> required</div>
+      </div>
+        </div>
+        
+      <div class="form-group row">
+        <label for="example-date-input" class="col-2 col-form-label">Image</label>
+        <label class="btn btn-default">
+          <input type="file" (change)="selectFile($event);upload()" formControlName="file" />
+          <div  *ngIf="file==null" style="color: red;"><a style="font-weight: bold;">&#x2022;</a> required</div>
+        </label>
+    </div>
+   </form>
+      <button type="submit" class="btn btn-primary" (click)="ajouter()" [disabled]="articleform.invalid" >submit</button>
+</div>

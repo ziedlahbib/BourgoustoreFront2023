@@ -1,0 +1,120 @@
+
+  <div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">   
+    <button  type="button"class="btn btn-primary btn-round" style="margin: 10px 50px 20px;"  routerLink="/ajout-canditature">ajouter</button>
+  </div>
+  
+  
+     <div class="container-fluid mt--7">
+  
+  
+      <div class="row">
+        <div class="col">
+          <div class="card shadow">
+  
+            <div class="card-header border-0">
+              <h3 class="mb-0">Trip List</h3>
+            </div>
+  
+            <div>
+              <div class="table-responsive">
+                <div class="example-header">
+                  <mat-form-field>
+                    <input matInput (keyup)="applyFilter($event)" placeholder="search" >
+                  </mat-form-field>
+                </div>
+  
+                <div class="example-container mat-elevation-z8">
+  
+                  <mat-table [dataSource]="dataSource" matSort class="table align-items-center table-flush">
+                    <!-- Name Column -->
+                    <ng-container matColumnDef="image">
+                      <mat-header-cell *matHeaderCellDef mat-sort-header> image </mat-header-cell>
+                      <mat-cell *matCellDef="let row" >
+                        <ng-container  >
+  
+  
+                        <div   class="matrowzied" >
+                          <input type="checkbox" id="btnControl"/>
+                          <label *ngIf="row.files!!=null" class="btn" for="btnControl"><img [routerLink]="['/trip-management/image', row.files.id ]" src="http://localhost:8085/FileTrip/files/{{row.files.id}}" id="btnLeft" /></label>
+                        </div>
+  
+                      </ng-container>
+                    </mat-cell>
+                    </ng-container>
+                    <!-- ID Column -->
+                    <ng-container matColumnDef="prix">
+                      <mat-header-cell *matHeaderCellDef mat-sort-header > prix </mat-header-cell>
+                      <mat-cell *matCellDef="let row" >
+                        <div class="matrowzied">
+                          {{row.prix}}
+                        </div>
+  
+  
+                      </mat-cell>
+                    </ng-container>
+                    <!-- ID Column -->
+                    <ng-container matColumnDef="name">
+                      <mat-header-cell *matHeaderCellDef mat-sort-header > name </mat-header-cell>
+                      <mat-cell *matCellDef="let row" >
+                        <div class="matrowzied">
+                          {{row.name}}
+                        </div>
+  
+  
+                      </mat-cell>
+                    </ng-container>
+  
+                    <!-- ID Column -->
+                    <ng-container matColumnDef="description">
+                      <mat-header-cell *matHeaderCellDef mat-sort-header > description </mat-header-cell>
+                      <mat-cell *matCellDef="let row" >
+                        <div class="matrowzied">
+                          {{row.description}}
+                        </div>
+  
+  
+                      </mat-cell>
+                    </ng-container>
+  
+                    <!-- Progress Column -->
+                    <ng-container matColumnDef="categorie">
+                      <mat-header-cell *matHeaderCellDef mat-sort-header> categorie </mat-header-cell>
+                      <mat-cell *matCellDef="let row"  > <div > {{row.categorie}}  </div></mat-cell>
+                    </ng-container>
+  
+                    <!-- Name Column -->
+                    <ng-container matColumnDef="type">
+                      <mat-header-cell *matHeaderCellDef mat-sort-header> type </mat-header-cell>
+                      <mat-cell *matCellDef="let row"  > <div >{{row.type}} </div></mat-cell>
+                    </ng-container>
+  
+                    
+                    <!-- Color Column -->
+                    <ng-container matColumnDef="option" >
+                      <mat-header-cell *matHeaderCellDef mat-sort-header> option </mat-header-cell>
+                      <mat-cell *matCellDef="let row" class="text-right " >
+                          <div >
+                            <button  class="dropdown-item"  id="ziedpag" style="background-color:#DC143C"  [routerLink]="['/trip-management/modifier', row.idTrip ]">modifier</button><br>
+                            <button  class="dropdown-item"  id="ziedpag"  style="background-color: #FA8072;" >supprimer</button><br>
+                          </div>
+  
+  
+  
+                       </mat-cell>
+                    </ng-container>
+  
+                    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                    <mat-row *matRowDef="let row; columns: displayedColumns;">
+                    </mat-row>
+                  </mat-table>
+                  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+  
+  
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  
+  
