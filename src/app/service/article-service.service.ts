@@ -13,6 +13,7 @@ export class ArticleServiceService {
   addarticleUrl="/api/article/add-article";
   uploadfilef="/api/File/uploadf";
   getfiledetail="/api/File/filesdetail";
+  deletearticleUrl="/api/article/delete-article";
   constructor(private http : HttpClient) { }
   affichArticle() : Observable<Article[]> {
     return this.http.get<Article[]>(this.getArticleUrl);
@@ -31,6 +32,9 @@ export class ArticleServiceService {
     }
     affecterfileauarticle(id:String,idf:number,article :Article):Observable<Article>{
       return this.http.put<Article>("/api/File/affecter-fileToArticle/"+id+"/"+idf,article);
+    }
+    deletearticle(id:number): any{
+      return this.http.delete(`${this.deletearticleUrl}/${id}`);
     }
 
 }

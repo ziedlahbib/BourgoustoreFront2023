@@ -46,4 +46,19 @@ export class ArticleManagmentComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
    
   }
+
+  supprimer(article :any){
+    this.articleserveice.deletearticle(article.id).subscribe(()=>this.articleserveice.affichArticle().subscribe(
+      data=>{
+        this.listofarticles=data;
+        this.dataSource = new MatTableDataSource(this.listofarticles);
+       let audio = new Audio()
+       audio.src= "../assets/alert.mp3"
+       audio.src= "../assets/confirm2.mp3"
+       audio.load();
+       audio.play();
+      }
+    )
+    );
+  }
 }
