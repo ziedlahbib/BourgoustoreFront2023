@@ -9,12 +9,9 @@
 
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
-<div id="bandeau">
-    <div style="display:none" id="mySidebar">
+<div id="navbar">
+   
 
-        <div id="menu"><app-sidenav></app-sidenav></div>
-      </div>   
-<div >
     <div class="divide">
         <button id="closeNav"
         (click)="w3_close()">&#9776;</button>
@@ -24,13 +21,18 @@
         <app-navbar-back>
         </app-navbar-back>
     </div>
-
-</div>
 </div>
 <div id="main">
-       <router-outlet></router-outlet>
+
+
+    <div style="display:none" id="menu"><app-sidenav></app-sidenav></div>
+
+    <div id="contenu">
+        <router-outlet></router-outlet>
+       </div>
+      
 </div>
-<div id="pied_page"><app-footer-back></app-footer-back></div>
+<div id="footer"><app-footer-back></app-footer-back></div>
  
 <!-- Sidebar 
 <div>

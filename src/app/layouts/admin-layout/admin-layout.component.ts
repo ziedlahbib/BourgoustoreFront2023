@@ -14,12 +14,16 @@ export class AdminLayoutComponent implements OnInit {
   ngOnInit(): void {
   }
    w3_open() {
-    (<HTMLInputElement>document.getElementById("main")).style.marginLeft = "14%";
-    (<HTMLInputElement>document.getElementById("mySidebar")).style.width = "25%";
-  (<HTMLInputElement>document.getElementById("mySidebar")).style.display = "block";
+
+    (<HTMLInputElement>document.getElementById("menu")).style.width = "240px";
+    (<HTMLInputElement>document.getElementById("menu")).style.float = "left";
+  (<HTMLInputElement>document.getElementById("menu")).style.display = "block";
   (<HTMLInputElement>document.getElementById("openNav")).style.display = 'none';
   (<HTMLInputElement>document.getElementById("openNav")).style.height = '57px';
   (<HTMLInputElement>document.getElementById("closeNav")).style.display = "inline-block";
+
+
+
 
 
   
@@ -27,9 +31,12 @@ export class AdminLayoutComponent implements OnInit {
   
    w3_close() {
     (<HTMLInputElement>document.getElementById("main")).style.marginLeft = "0%";
-    (<HTMLInputElement>document.getElementById("mySidebar")).style.display = "none";
+    (<HTMLInputElement>document.getElementById("menu")).style.width = "240px";
+    (<HTMLInputElement>document.getElementById("menu")).style.float = "left";
+    (<HTMLInputElement>document.getElementById("menu")).style.display = "none";
    (<HTMLInputElement>document.getElementById("openNav")).style.display = "inline-block";
    (<HTMLInputElement>document.getElementById("closeNav")).style.display = "none";
+  
   
   }
 }
