@@ -2,6 +2,7 @@ import { HttpClient, HttpEvent, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Article } from '../model/article.model';
+import { Categorie } from '../model/categorie';
 import { FileDB } from '../model/file-db.model';
 
 @Injectable({
@@ -14,10 +15,14 @@ export class ArticleServiceService {
   uploadfilef="/api/File/uploadf";
   getfiledetail="/api/File/filesdetail";
   deletearticleUrl="/api/article/delete-article";
+  afichparcaturl="/api/article/get-article-by-categorie/"
   constructor(private http : HttpClient) { }
   affichArticle() : Observable<Article[]> {
     return this.http.get<Article[]>(this.getArticleUrl);
     }
+    affichArticleparcategorie(categorie :String) : Observable<Article[]> {
+      return this.http.get<Article[]>(`${this.afichparcaturl}/${categorie}`);
+      }
     ajoutArticle(article :Article): Observable<Article>{
       return this.http.post<Article>(`${this.addarticleUrl}`,article);
     }

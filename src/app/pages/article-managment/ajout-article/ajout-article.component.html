@@ -34,7 +34,7 @@
           <mat-form-field appearance="fill">
             <mat-label>categorie</mat-label>
             <mat-select id="categorie" formControlName="categorie">
-              <mat-option *ngFor="let c of categorie | keyvalue" [value]="c.value" [value]="c.value">
+              <mat-option *ngFor="let c of categorie | keyvalue" [value]="c.value" >
                 {{c.value}}
               </mat-option>
             </mat-select>

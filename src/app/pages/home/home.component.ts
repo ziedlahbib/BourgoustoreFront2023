@@ -3,6 +3,9 @@ import { MatTableDataSource } from '@angular/material/table';
 import { SelectItem } from 'primeng/api';
 import {MatPaginator, PageEvent} from '@angular/material/paginator';
 import { CommandeServiceService } from 'src/app/service/commande-service.service';
+import { ArticleServiceService } from 'src/app/service/article-service.service';
+import { Categorie } from 'src/app/model/categorie';
+import { Article } from 'src/app/model/article.model';
 
 
 @Component({
@@ -14,50 +17,14 @@ export class HomeComponent implements OnInit {
 
   start=0;
   end=6;
-  item:any=[];
-  imagesPagination:any[]=[];
-  images:any[]=[
-    {
-      previewImageSrc:"assets/téléchargement222.jpg",
-      thumbnailImageSrc:"assets/téléchargement222.jpg",
-      title:"zied",
-      alt:"zziiieidiidiidi",
-      prix:20
-
-    },
-    {
-      previewImageSrc:"assets/téléchargement222.jpg",
-      thumbnailImageSrc:"assets/téléchargement222.jpg",
-      title:"ziedsssss",
-      alt:"zziiieidiidiidi",
-      prix:20
-
-    },
-    {
-      previewImageSrc:"assets/téléchargement222.jpg",
-      thumbnailImageSrc:"assets/téléchargement222.jpg",
-      title:"ziedsssss",
-      alt:"zziiieidiidiidi",
-      prix:20
-
-    },
-    {
-      previewImageSrc:"assets/téléchargement222.jpg",
-      thumbnailImageSrc:"assets/téléchargement222.jpg",
-      title:"ziedsssss",
-      alt:"zziiieidiidiidi",
-      prix:20
-
-    },
-    {
-      previewImageSrc:"assets/téléchargement222.jpg",
-      thumbnailImageSrc:"assets/téléchargement222.jpg",
-      title:"ziedsssss",
-      alt:"zziiieidiidiidi",
-      prix:20
-   
-    }
-  ]
+  categorie:Categorie;
+  articles:Article[];
+  articlePagination:Article[];
+  ArticleGaming:Article[];
+  Articletelephonique:Article[];
+  Articleinfoematique:Article[];
+  item:Article;
+  
   responsiveOptions:any[] = [
     {
         breakpoint: '1024px',
@@ -72,32 +39,63 @@ export class HomeComponent implements OnInit {
         numVisible: 1
     }
 ];
-  constructor(private cs:CommandeServiceService) { }
+  constructor(private cs:CommandeServiceService,private articleserveice:ArticleServiceService) { }
 
   ngOnInit(): void {
-    this.imagesPagination=this.images.slice(this.start, this.end)
+    
+    this.articleserveice.affichArticle().subscribe(
+      data=>{
+        this.articles=data;
+        this.articlePagination=this.articles.slice(this.start, this.end);
+      }
+    )
+    
+      this.articleserveice.affichArticleparcategorie("Univers_Gaming").subscribe(
+        data=>{
+          console.log(data);
+          this.ArticleGaming=data;
+
+        }
+      )
+      this.articleserveice.affichArticleparcategorie("Univers_Telephonie").subscribe(
+        data=>{
+          console.log(data);
+          this.Articletelephonique=data;
+
+        }
+      )
+      this.articleserveice.affichArticleparcategorie("Univers_Informatique").subscribe(
+        data=>{
+          console.log(data);
+          this.Articleinfoematique=data;
+
+        }
+      )
+    
+    
+
   }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     var imagessearch:any[]=[];
-    for(let v of this.images)
+    for(let v of this.articles)
     {
-      if(v.title.includes(filterValue))
+      if(v.name.includes(filterValue))
       {
         imagessearch.push(v);
       }
     }
-    this.imagesPagination=imagessearch;
+    this.articlePagination=imagessearch;
   }
   paginate(event:PageEvent) {
     let startIndex = event.pageSize * event.pageIndex;
     this.start = startIndex;
     let endIndex = startIndex + event.pageSize;
     this.end = endIndex;
-    if (endIndex > this.images.length) {
-      endIndex = this.images.length;
+    if (endIndex > this.articles.length) {
+      endIndex = this.articles.length;
     }
-    this.imagesPagination = this.images.slice(startIndex, endIndex);
+    this.articlePagination = this.articles.slice(startIndex, endIndex);
   }
   itemsCart:any[]=[];
 addtoCart(article:any){
