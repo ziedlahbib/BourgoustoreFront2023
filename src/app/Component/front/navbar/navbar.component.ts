@@ -27,57 +27,33 @@ export class NavbarComponent implements OnInit {
     
     this.items = [
       {
-          label:'File',
-          icon:'pi pi-fw pi-file',
-          items:[
-              {
-                  label:'New',
-                  icon:'pi pi-fw pi-plus',
-                  items:[
-                  {
-                      label:'Bookmark',
-                      icon:'pi pi-fw pi-bookmark'
-                  },
-                  {
-                      label:'Video',
-                      icon:'pi pi-fw pi-video'
-                  },
+          label:'home',
+          icon:'pi pi-home',
+          routerLink:'/home',
 
-                  ]
-              },
-              {
-                  label:'Delete',
-                  icon:'pi pi-fw pi-trash'
-              },
-              {
-                  separator:true
-              },
-              {
-                  label:'Export',
-                  icon:'pi pi-fw pi-external-link'
-              }
-          ]
       },
       {
-          label:'Edit',
-          icon:'pi pi-fw pi-pencil',
+          label:'Gaming',
           items:[
               {
-                  label:'Left',
-                  icon:'pi pi-fw pi-align-left'
+                  label:'Console de jeux',
               },
               {
-                  label:'Right',
-                  icon:'pi pi-fw pi-align-right'
+                  label:'unité Gaming',
+
               },
               {
-                  label:'Center',
-                  icon:'pi pi-fw pi-align-center'
+                  label:'péréphériqe Gaming',
+  
               },
               {
-                  label:'Justify',
-                  icon:'pi pi-fw pi-align-justify'
+                  label:'Composant PC Gaming',
+
               },
+              {
+                label:'PC Portable',
+
+            },
 
           ]
       },
