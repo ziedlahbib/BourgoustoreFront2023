@@ -118,31 +118,31 @@ export class NavbarComponent implements OnInit {
           items:[
               {
                   label:'Smartphone',
-                  routerLink: ['/artcileparcategorietype'], queryParams: {'cat': 'Univers_Gaming','type':'Smartphone'},
+                  routerLink: ['/artcileparcategorietype'], queryParams: {'cat': 'Univers_Telephonie','type':'Smartphone'},
               },
               {
                   label:'Apple',
-                  routerLink: ['/artcileparcategorietype'], queryParams: {'cat': 'Univers_Gaming','type':'Apple'},
+                  routerLink: ['/artcileparcategorietype'], queryParams: {'cat': 'Univers_Telephonie','type':'Apple'},
               },
               {
                   label:'GSM',
-                  routerLink: ['/artcileparcategorietype'], queryParams: {'cat': 'Univers_Gaming','type':'GSM'},
+                  routerLink: ['/artcileparcategorietype'], queryParams: {'cat': 'Univers_Telephonie','type':'GSM'},
               },
               {
                   label:'Téléphone fixe',
-                  routerLink: ['/artcileparcategorietype'], queryParams: {'cat': 'Univers_Gaming','type':'Téléphone_fixe'},
+                  routerLink: ['/artcileparcategorietype'], queryParams: {'cat': 'Univers_Telephonie','type':'Téléphone_fixe'},
               },
               {
                   label:'Accessoir telephoniies',
-                  routerLink: ['/artcileparcategorietype'], queryParams: {'cat': 'Univers_Gaming','type':'Accessoir_telephoniies'},
+                  routerLink: ['/artcileparcategorietype'], queryParams: {'cat': 'Univers_Telephonie','type':'Accessoir_telephoniies'},
               },
               {
                   label:'Smartwatch',
-                  routerLink: ['/artcileparcategorietype'], queryParams: {'cat': 'Univers_Gaming','type':'Smartwatch'},
+                  routerLink: ['/artcileparcategorietype'], queryParams: {'cat': 'Univers_Telephonie','type':'Smartwatch'},
               },
               {
                   label:'Tablette',
-                  routerLink: ['/artcileparcategorietype'], queryParams: {'cat': 'Univers_Gaming','type':'Tablette'},
+                  routerLink: ['/artcileparcategorietype'], queryParams: {'cat': 'Univers_Telephonie','type':'Tablette'},
               }
           ]
       },
