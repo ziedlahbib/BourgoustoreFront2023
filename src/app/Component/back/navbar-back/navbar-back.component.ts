@@ -11,35 +11,36 @@ export class NavbarBackComponent implements OnInit {
   
   nom="zied"
   items: MenuItem[]=[];
+  item: MenuItem[]=[];
   constructor() { }
 
   ngOnInit(): void {
+    this.item = [
+        {
+            label:'home',
+            icon:'pi pi-home',
+            routerLink:'/home',
+  
+        },];
     this.items = [
 
-      {
-          label:this.nom,
-          icon:'assets/images.png',
-          items:[
-              {
-                  label:'Left',
-                  icon:'pi pi-fw pi-align-left'
-              },
-              {
-                  label:'Right',
-                  icon:'pi pi-fw pi-align-right'
-              },
-              {
-                  label:'Center',
-                  icon:'pi pi-fw pi-align-center'
-              },
-              {
-                  label:'Justify',
-                  icon:'pi pi-fw pi-align-justify'
-              },
-  
-          ]
-      },
-  ];
+        {
+            label:this.nom,
+            icon:'assets/images.png',
+            items:[
+                {
+                    label:'profil',
+                    icon:'pi pi-user'
+    
+                },
+                {
+                    label:'logout',
+                    icon:'pi pi-sign-out'
+                },
+    
+            ]
+        },
+    ];
   }
 
 }

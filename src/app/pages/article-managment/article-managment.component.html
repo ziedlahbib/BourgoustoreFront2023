@@ -17,8 +17,8 @@
 
 </style>
 
- <div  style="background-color: antiquewhite;">
-  <div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">   
+ <div>
+  <div >   
     <button  type="button"class="btn btn-primary btn-round" style="margin: 10px 50px 20px;"  routerLink="/ajoutarticle">ajouter</button>
   </div>
   
@@ -33,7 +33,7 @@
                   </mat-form-field>
                 </div>
   
-                <div class="example-container mat-elevation-z8">
+
   
                   <mat-table [dataSource]="dataSource" matSort class="table align-items-center table-flush">
                     <!-- Name Column -->
@@ -129,8 +129,7 @@
                   </mat-table>
                   <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
   
-  
-            </div>
+
           </div>
       
 
