@@ -1,6 +1,9 @@
-import { AfterContentInit, Component, NgModule, OnInit } from '@angular/core';
+import { AfterContentInit, Component, EventEmitter, Input, NgModule, OnChanges, OnInit, Output, SimpleChange, ViewChild } from '@angular/core';
 import {MenuItem} from 'primeng/api';
 import { MenubarModule } from 'primeng/menubar';
+import { Article } from 'src/app/model/article.model';
+import { AffichcategorieComponent } from 'src/app/pages/affichcategorie/affichcategorie.component';
+import { ArticleServiceService } from 'src/app/service/article-service.service';
 import { CommandeServiceService } from 'src/app/service/commande-service.service';
 
 @Component({
@@ -11,10 +14,11 @@ import { CommandeServiceService } from 'src/app/service/commande-service.service
 
 export class NavbarComponent implements OnInit {
 
+  articles:Article[];
   nom="zied"
   items: MenuItem[] = [];
   item: MenuItem[] = [];
-  constructor(private cs:CommandeServiceService) {
+  constructor(private cs:CommandeServiceService,private articleserveice:ArticleServiceService) {
     this.cs.cartSubject.subscribe(
         (data)=>{
             this.cartItem=data;
@@ -23,6 +27,7 @@ export class NavbarComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    
     this.cartItemFunc();
     
     this.items = [
@@ -33,101 +38,157 @@ export class NavbarComponent implements OnInit {
 
       },
       {
-          label:'Gaming',
+          label:'Univers Gaming',
           items:[
               {
-                  label:'Console de jeux',
+                  label:'Console de jeux',    
+                  command: (event) => {
+                    this.affichcattype("Univers_Gaming","Console_de_jeux");
+           
+                  },
+                  routerLink:'/artcileparcategorietype',
+                                
               },
               {
                   label:'unité Gaming',
+                  command: (event) => {
+                    this.affichcattype("Univers_Gaming","Unité_Gaming");
+           
+                  },
+                  routerLink:'/artcileparcategorietype',
 
               },
               {
                   label:'péréphériqe Gaming',
+                  command: (event) => {
+                    this.affichcattype("Univers_Gaming","Perephérique_pc_gaming");
+           
+                  },
+                  routerLink:'/artcileparcategorietype',
   
               },
               {
                   label:'Composant PC Gaming',
+                  command: (event) => {
+                    this.affichcattype("Univers_Gaming","Composant_PC_Gaming");
+           
+                  },
+                  routerLink:'/artcileparcategorietype',
 
               },
               {
                 label:'PC Portable',
+                command: (event) => {
+                    this.affichcattype("Univers_Gaming","PC_Portable");
+           
+                },
+                routerLink:'/artcileparcategorietype',
 
             },
 
           ]
       },
       {
-          label:'Users',
-          icon:'pi pi-fw pi-user',
+          label:'Univers Informatique', 
           items:[
               {
-                  label:'New',
-                  icon:'pi pi-fw pi-user-plus',
-
-              },
-              {
-                  label:'Delete',
-                  icon:'pi pi-fw pi-user-minus',
-
-              },
-              {
-                  label:'Search',
-                  icon:'pi pi-fw pi-users',
-                  items:[
-                  {
-                      label:'Filter',
-                      icon:'pi pi-fw pi-filter',
-                      items:[
-                          {
-                              label:'Print',
-                              icon:'pi pi-fw pi-print'
-                          }
-                      ]
+                  label:'Pc Portable',
+                  command: (event) => {
+                    this.affichcattype("Univers_Informatique","PC_Portable");
+           
                   },
-                  {
-                      icon:'pi pi-fw pi-bars',
-                      label:'List'
-                  }
-                  ]
+                  routerLink:'/artcileparcategorietype',
+
+              },
+              {
+                  label:'Pc De Bureau',
+                  command: (event) => {
+                    this.affichcattype("Univers_Informatique","Pc_De_Bureau");
+           
+                  },
+                  routerLink:'/artcileparcategorietype',
+
+              },
+              {
+                  label:'Péréphérique et Accessoire Stockage',
+                  command: (event) => {
+                    this.affichcattype("Univers_Informatique","Péréphérique_et_Accessoire_Stockage");
+           
+                  },
+                  routerLink:'/artcileparcategorietype',
+              }
+              ,
+              {
+                  label:'Composant et maintenance',
+                  command: (event) => {
+                    this.affichcattype("Univers_Informatique","Composant_et_maintenance");
+           
+                  },
+                  routerLink:'/artcileparcategorietype',
               }
           ]
       },
       {
-          label:'Events',
-          icon:'pi pi-fw pi-calendar',
+          label:'Univers Telephonie',
           items:[
               {
-                  label:'Edit',
-                  icon:'pi pi-fw pi-pencil',
-                  items:[
-                  {
-                      label:'Save',
-                      icon:'pi pi-fw pi-calendar-plus'
+                  label:'Smartphone',
+                  command: (event) => {
+                    this.affichcattype("Univers_Telephonie","Smartphone");
+           
                   },
-                  {
-                      label:'Delete',
-                      icon:'pi pi-fw pi-calendar-minus'
-                  },
-
-                  ]
+                  routerLink:'/artcileparcategorietype',
               },
               {
-                  label:'Archieve',
-                  icon:'pi pi-fw pi-calendar-times',
-                  items:[
-                  {
-                      label:'Remove',
-                      icon:'pi pi-fw pi-calendar-minus'
-                  }
-                  ]
+                  label:'Apple',
+                  command: (event) => {
+                    this.affichcattype("Univers_Telephonie","Apple");
+                    
+                  },
+                  routerLink:'/artcileparcategorietype',
+              },
+              {
+                  label:'GSM',
+                  command: (event) => {
+                    this.affichcattype("Univers_Telephonie","GSM");
+           
+                  },
+                  routerLink:'/artcileparcategorietype',
+              },
+              {
+                  label:'Téléphone fixe',
+                  command: (event) => {
+                    this.affichcattype("Univers_Telephonie","Téléphone_fixe");
+           
+                  },
+                  routerLink:'/artcileparcategorietype',
+              },
+              {
+                  label:'Accessoir telephoniies',
+                  command: (event) => {
+                    this.affichcattype("Univers_Telephonie","Accessoir_telephoniies");
+           
+                  },
+                  routerLink:'/artcileparcategorietype',
+              },
+              {
+                  label:'Smartwatch',
+                  command: (event) => {
+                    this.affichcattype("Univers_Telephonie","Smartwatch");
+           
+                  },
+                  routerLink:'/artcileparcategorietype',
+              },
+              {
+                  label:'Tablette',
+                  command: (event) => {
+                    this.affichcattype("Univers_Telephonie","Tablette");
+           
+                  },
+                  routerLink:'/artcileparcategorietype',
               }
           ]
       },
-      {
-          label:'Quit',
-          icon:'pi pi-fw pi-power-off'
-      }
   ];
   ///////////////////////////////////////////////////////
   this.item = [
@@ -137,25 +198,25 @@ export class NavbarComponent implements OnInit {
         icon:'assets/images.png',
         items:[
             {
-                label:'Left',
-                icon:'pi pi-fw pi-align-left'
+                label:'profil',
+                icon:'pi pi-user'
+
             },
             {
-                label:'Right',
-                icon:'pi pi-fw pi-align-right'
-            },
-            {
-                label:'Center',
-                icon:'pi pi-fw pi-align-center'
-            },
-            {
-                label:'Justify',
-                icon:'pi pi-fw pi-align-justify'
+                label:'logout',
+                icon:'pi pi-sign-out'
             },
 
         ]
     },
 ];
+}
+affichcattype(categorie:String,type:String){
+    this.articleserveice.affichArticleparcategorieType(categorie,type).subscribe(
+        data=>{
+            this.articles=data;
+        }
+    )
 }
 cartItem:number;
 cartItemFunc(){
@@ -169,4 +230,6 @@ cartItemFunc(){
     this.cartItem=0;
 }
 }
+
+
 }

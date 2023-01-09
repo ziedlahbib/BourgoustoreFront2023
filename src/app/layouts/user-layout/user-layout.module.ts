@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UserLayoutRoutingModule } from './user-layout-routing.module';
 import { UserLayoutComponent } from './user-layout.component';
@@ -28,6 +28,8 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { PanierComponent } from 'src/app/pages/panier/panier.component';
 import { PassercommandedialogComponentComponent } from 'src/app/pages/panier/passercommandedialog-component/passercommandedialog-component.component';
 import {DividerModule} from 'primeng/divider';
+import { AffichcategorieComponent } from 'src/app/pages/affichcategorie/affichcategorie.component';
+import { AffichcategorietypeComponent } from 'src/app/pages/affichcategorietype/affichcategorietype.component';
 
 
 
@@ -42,6 +44,8 @@ import {DividerModule} from 'primeng/divider';
     HomeComponent,
     PanierComponent,
     PassercommandedialogComponentComponent,
+    AffichcategorieComponent,
+    AffichcategorietypeComponent,
     
     
     

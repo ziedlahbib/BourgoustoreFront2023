@@ -16,6 +16,7 @@ export class ArticleServiceService {
   getfiledetail="/api/File/filesdetail";
   deletearticleUrl="/api/article/delete-article";
   afichparcaturl="/api/article/get-article-by-categorie/"
+  affichcattypeurl="/api/article/get-article-by-categorie-ET-Type/"
   constructor(private http : HttpClient) { }
   affichArticle() : Observable<Article[]> {
     return this.http.get<Article[]>(this.getArticleUrl);
@@ -23,6 +24,9 @@ export class ArticleServiceService {
     affichArticleparcategorie(categorie :String) : Observable<Article[]> {
       return this.http.get<Article[]>(`${this.afichparcaturl}/${categorie}`);
       }
+      affichArticleparcategorieType(categorie :String,type:String) : Observable<Article[]> {
+        return this.http.get<Article[]>(`${this.affichcattypeurl}/${categorie}/${type}`);
+        }
     ajoutArticle(article :Article): Observable<Article>{
       return this.http.post<Article>(`${this.addarticleUrl}`,article);
     }

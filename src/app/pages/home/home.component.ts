@@ -17,7 +17,6 @@ export class HomeComponent implements OnInit {
 
   start=0;
   end=6;
-  categorie:Categorie;
   articles:Article[];
   articlePagination:Article[];
   ArticleGaming:Article[];
