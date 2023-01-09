@@ -146,6 +146,12 @@ export class NavbarComponent implements OnInit {
               }
           ]
       },
+      {
+        label:'Espace Admin',
+        icon:'pi pi-th-large',
+        routerLink:'/afficherarticle',
+
+    },
   ];
   ///////////////////////////////////////////////////////
   this.item = [
