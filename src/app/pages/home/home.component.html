@@ -120,9 +120,9 @@
 </div>
 <!--tous les produits-->
 <div>
-    <ng-template pTemplate="header">
+
         <h1 class="glow">--tous les produit--</h1>
-    </ng-template>
+
     <div style="padding:40px ;">
         <div class="example-header" style="margin-left: 50px">
 
@@ -152,12 +152,8 @@
        </div>
       </div>
              <div class="col-12" *ngIf="articlePagination">
-               <mat-paginator [length]="articles.length" [pageSize]="6" [pageSizeOptions]="[6, 12, 18]" (page)="paginate($event)">
-      
-               </mat-paginator>
-      
+               <mat-paginator [length]="articles.length" [pageSize]="6" [pageSizeOptions]="[6, 12, 18]" (page)="paginate($event)">      
+               </mat-paginator>     
              </div>
-      
-      
       </div>
 </div>

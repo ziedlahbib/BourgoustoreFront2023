@@ -2,6 +2,7 @@
     <p-menubar [model]="items">
         <ng-template  pTemplate="start">
             <img src="assets/images.png" routerLink="/home" height="40" class="mr-2">
+            <input type="text" pInputText placeholder="Search">
         </ng-template>
         <ng-template pTemplate="end">
             <i class="pi pi-shopping-cart mr-4 p-text-secondary" routerLink="/panier" pBadge style="font-size: 2rem" value="{{cartItem}}" severity="danger"></i>
