@@ -71,7 +71,6 @@ export class HomeComponent implements OnInit {
         }
       )
     
-    
 
   }
   applyFilter(event: Event) {

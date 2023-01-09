@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Article } from 'src/app/model/article.model';
 import { CommandeServiceService } from 'src/app/service/commande-service.service';
 import { PassercommandedialogComponentComponent } from './passercommandedialog-component/passercommandedialog-component.component';
 
@@ -29,6 +30,13 @@ export class PanierComponent implements OnInit {
       this.cartItem=[];
       
   }
+}
+deleteitem(article:Article){
+
+  this.cartItem.splice(this.cartItem.indexOf(article),1);
+  this.prixtotal=this.prixtotal-article.prix;
+  localStorage.setItem('localCart',JSON.stringify(this.cartItem));
+  this.cartNumberFunc();
 }
 delete(){
   localStorage.clear();
