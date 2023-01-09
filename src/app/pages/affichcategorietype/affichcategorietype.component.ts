@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
+import { ActivatedRoute } from '@angular/router';
 import { Article } from 'src/app/model/article.model';
 import { ArticleServiceService } from 'src/app/service/article-service.service';
 import { CommandeServiceService } from 'src/app/service/commande-service.service';
@@ -15,10 +16,19 @@ export class AffichcategorietypeComponent implements OnInit {
   end=6;
   articles:Article[];
   articlePagination:Article[];
-  constructor(private cs:CommandeServiceService,private articleserveice:ArticleServiceService) { }
+  constructor(private cs:CommandeServiceService,private articleserveice:ArticleServiceService,private router:ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.articlePagination=this.articles.slice(this.start, this.end);
+    console.log('cat',this.router.snapshot.queryParams.cat);
+    console.log('cat',this.router.snapshot.queryParams.type);
+    this.articleserveice.affichArticleparcategorieType(this.router.snapshot.queryParams.cat,this.router.snapshot.queryParams.type).subscribe(
+      data=>{
+          this.articles=data;
+          this.articlePagination=this.articles.slice(this.start, this.end);
+          
+      }
+  )
+    
   }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

@@ -46,7 +46,7 @@ export class NavbarComponent implements OnInit {
                     this.affichcattype("Univers_Gaming","Console_de_jeux");
            
                   },
-                  routerLink:'/artcileparcategorietype',
+                  routerLink: ['/artcileparcategorietype'], queryParams: {'cat': 'Univers_Gaming','type':'Console_de_jeux'},
                                 
               },
               {
@@ -55,7 +55,7 @@ export class NavbarComponent implements OnInit {
                     this.affichcattype("Univers_Gaming","Unité_Gaming");
            
                   },
-                  routerLink:'/artcileparcategorietype',
+                  routerLink: ['/artcileparcategorietype'], queryParams: {'cat': 'Univers_Gaming','type':'Unité_Gaming'}
 
               },
               {
@@ -64,16 +64,17 @@ export class NavbarComponent implements OnInit {
                     this.affichcattype("Univers_Gaming","Perephérique_pc_gaming");
            
                   },
-                  routerLink:'/artcileparcategorietype',
+                  routerLink: ['/artcileparcategorietype'], queryParams: {'cat': 'Univers_Gaming','type':'Perephérique_pc_gaming'}
   
               },
               {
                   label:'Composant PC Gaming',
+                  /*
                   command: (event) => {
                     this.affichcattype("Univers_Gaming","Composant_PC_Gaming");
            
-                  },
-                  routerLink:'/artcileparcategorietype',
+                  },*/
+                  routerLink: ['/artcileparcategorietype'], queryParams: {'cat': 'Univers_Gaming','type':'Composant_PC_Gaming'},
 
               },
               {
@@ -82,7 +83,7 @@ export class NavbarComponent implements OnInit {
                     this.affichcattype("Univers_Gaming","PC_Portable");
            
                 },
-                routerLink:'/artcileparcategorietype',
+                routerLink: ['/artcileparcategorietype'], queryParams: {'cat': 'Univers_Gaming','type':'PC_Portable'},
 
             },
 
@@ -93,38 +94,22 @@ export class NavbarComponent implements OnInit {
           items:[
               {
                   label:'Pc Portable',
-                  command: (event) => {
-                    this.affichcattype("Univers_Informatique","PC_Portable");
-           
-                  },
-                  routerLink:'/artcileparcategorietype',
+                  routerLink: ['/artcileparcategorietype'], queryParams: {'cat': 'Univers_Gaming','type':'PC_Portable'},
 
               },
               {
                   label:'Pc De Bureau',
-                  command: (event) => {
-                    this.affichcattype("Univers_Informatique","Pc_De_Bureau");
-           
-                  },
-                  routerLink:'/artcileparcategorietype',
+                  routerLink: ['/artcileparcategorietype'], queryParams: {'cat': 'Univers_Gaming','type':'Pc_De_Bureau'},
 
               },
               {
                   label:'Péréphérique et Accessoire Stockage',
-                  command: (event) => {
-                    this.affichcattype("Univers_Informatique","Péréphérique_et_Accessoire_Stockage");
-           
-                  },
-                  routerLink:'/artcileparcategorietype',
+                  routerLink: ['/artcileparcategorietype'], queryParams: {'cat': 'Univers_Gaming','type':'Péréphérique_et_Accessoire_Stockage'},
               }
               ,
               {
                   label:'Composant et maintenance',
-                  command: (event) => {
-                    this.affichcattype("Univers_Informatique","Composant_et_maintenance");
-           
-                  },
-                  routerLink:'/artcileparcategorietype',
+                  routerLink: ['/artcileparcategorietype'], queryParams: {'cat': 'Univers_Gaming','type':'Composant_et_maintenance'},
               }
           ]
       },
@@ -133,59 +118,31 @@ export class NavbarComponent implements OnInit {
           items:[
               {
                   label:'Smartphone',
-                  command: (event) => {
-                    this.affichcattype("Univers_Telephonie","Smartphone");
-           
-                  },
-                  routerLink:'/artcileparcategorietype',
+                  routerLink: ['/artcileparcategorietype'], queryParams: {'cat': 'Univers_Gaming','type':'Smartphone'},
               },
               {
                   label:'Apple',
-                  command: (event) => {
-                    this.affichcattype("Univers_Telephonie","Apple");
-                    
-                  },
-                  routerLink:'/artcileparcategorietype',
+                  routerLink: ['/artcileparcategorietype'], queryParams: {'cat': 'Univers_Gaming','type':'Apple'},
               },
               {
                   label:'GSM',
-                  command: (event) => {
-                    this.affichcattype("Univers_Telephonie","GSM");
-           
-                  },
-                  routerLink:'/artcileparcategorietype',
+                  routerLink: ['/artcileparcategorietype'], queryParams: {'cat': 'Univers_Gaming','type':'GSM'},
               },
               {
                   label:'Téléphone fixe',
-                  command: (event) => {
-                    this.affichcattype("Univers_Telephonie","Téléphone_fixe");
-           
-                  },
-                  routerLink:'/artcileparcategorietype',
+                  routerLink: ['/artcileparcategorietype'], queryParams: {'cat': 'Univers_Gaming','type':'Téléphone_fixe'},
               },
               {
                   label:'Accessoir telephoniies',
-                  command: (event) => {
-                    this.affichcattype("Univers_Telephonie","Accessoir_telephoniies");
-           
-                  },
-                  routerLink:'/artcileparcategorietype',
+                  routerLink: ['/artcileparcategorietype'], queryParams: {'cat': 'Univers_Gaming','type':'Accessoir_telephoniies'},
               },
               {
                   label:'Smartwatch',
-                  command: (event) => {
-                    this.affichcattype("Univers_Telephonie","Smartwatch");
-           
-                  },
-                  routerLink:'/artcileparcategorietype',
+                  routerLink: ['/artcileparcategorietype'], queryParams: {'cat': 'Univers_Gaming','type':'Smartwatch'},
               },
               {
                   label:'Tablette',
-                  command: (event) => {
-                    this.affichcattype("Univers_Telephonie","Tablette");
-           
-                  },
-                  routerLink:'/artcileparcategorietype',
+                  routerLink: ['/artcileparcategorietype'], queryParams: {'cat': 'Univers_Gaming','type':'Tablette'},
               }
           ]
       },
@@ -215,6 +172,7 @@ affichcattype(categorie:String,type:String){
     this.articleserveice.affichArticleparcategorieType(categorie,type).subscribe(
         data=>{
             this.articles=data;
+            
         }
     )
 }

@@ -10,7 +10,8 @@ const routes: Routes = [
   { path: 'home',       component: HomeComponent },
   { path: 'panier',       component: PanierComponent },
   { path: 'artcileparcategorie',       component: AffichcategorieComponent },
-  { path: 'artcileparcategorietype',       component: AffichcategorietypeComponent }
+  { path: 'artcileparcategorietype',       component: AffichcategorietypeComponent },
+  { path: 'artcileparcategorietype/:cat/:type',       component: AffichcategorietypeComponent }
 ];
 
 @NgModule({
