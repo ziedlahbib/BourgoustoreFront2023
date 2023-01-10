@@ -2,9 +2,13 @@ import { AfterContentInit, Component, EventEmitter, Input, NgModule, OnChanges, 
 import {MenuItem} from 'primeng/api';
 import { MenubarModule } from 'primeng/menubar';
 import { Article } from 'src/app/model/article.model';
+import { Role } from 'src/app/model/role.model';
+import { User } from 'src/app/model/user.model';
 import { AffichcategorieComponent } from 'src/app/pages/affichcategorie/affichcategorie.component';
 import { ArticleServiceService } from 'src/app/service/article-service.service';
+import { AuthServiceService } from 'src/app/service/auth-service.service';
 import { CommandeServiceService } from 'src/app/service/commande-service.service';
+import { UserServiceService } from 'src/app/service/user-service.service';
 
 @Component({
   selector: 'app-navbar',
@@ -14,11 +18,15 @@ import { CommandeServiceService } from 'src/app/service/commande-service.service
 
 export class NavbarComponent implements OnInit {
 
+    user:User;
+    role:Role;
+    isLoggedIn = false;
   articles:Article[];
   nom="zied"
   items: MenuItem[] = [];
   item: MenuItem[] = [];
-  constructor(private cs:CommandeServiceService,private articleserveice:ArticleServiceService) {
+  constructor(private cs:CommandeServiceService,private articleserveice:ArticleServiceService,
+    private authenticationService: AuthServiceService,private us:UserServiceService) {
     this.cs.cartSubject.subscribe(
         (data)=>{
             this.cartItem=data;
@@ -27,6 +35,15 @@ export class NavbarComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.us.getuserbyusername(sessionStorage.authenticatedUser).subscribe(
+        data=>{
+            this.user=data;
+            this.role=data.role;
+            console.log(data.role)
+        }
+     )
+     this.isLoggedIn = this.authenticationService.isUserLoggedIn();
+     console.log('menu ->' + this.isLoggedIn);
     this.articleserveice.affichArticle().subscribe(
         data=>{
           this.articles=data;
@@ -172,7 +189,11 @@ export class NavbarComponent implements OnInit {
             },
             {
                 label:'logout',
-                icon:'pi pi-sign-out'
+                icon:'pi pi-sign-out',
+                command: (event) => {
+                    this.handleLogout()
+                },
+                routerLink:'/login',
             },
 
         ]
@@ -212,6 +233,8 @@ cartItemFunc(){
     this.cartItem=0;
 }
 }
-
+handleLogout() {
+    this.authenticationService.logout();
+  }
 
 }
