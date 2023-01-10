@@ -14,8 +14,6 @@ import { Article } from 'src/app/model/article.model';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-
-  value: number = 0;
   start=0;
   end=6;
   articles:Article[];
