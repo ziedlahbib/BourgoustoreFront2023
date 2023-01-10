@@ -144,7 +144,12 @@
              <p class="card-text" style="color: rgb(63, 108, 108);">description:{{t.description}}</p>
              <p class="card-text" style="color: red;">prix:{{t.prix}}</p>
              <div class="card-body">
-                <p-button type="button" styleClass="p-button p-button-rounded mr-2" icon="pi pi-angle-double-right"></p-button>
+                <div class="field col-12 md:col-3">
+                    <label for="vertical" style="display: block">Vertical</label>
+                    <p-inputNumber [(ngModel)]="value" [showButtons]="true" buttonLayout="vertical" spinnerMode="vertical" inputId="vertical"
+                    decrementButtonClass="p-button-secondary" incrementButtonClass="p-button-secondary" incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus">
+                    </p-inputNumber>
+                </div>
                 <p-button type="button" styleClass="p-button-success p-button-rounded mr-2" icon="pi pi-shopping-cart"></p-button>
              </div>
            </div>

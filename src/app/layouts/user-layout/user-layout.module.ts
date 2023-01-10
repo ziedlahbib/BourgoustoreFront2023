@@ -31,6 +31,7 @@ import {DividerModule} from 'primeng/divider';
 import { AffichcategorieComponent } from 'src/app/pages/affichcategorie/affichcategorie.component';
 import { AffichcategorietypeComponent } from 'src/app/pages/affichcategorietype/affichcategorietype.component';
 import { RechercheComponent } from 'src/app/pages/recherche/recherche.component';
+import {InputNumberModule} from 'primeng/inputnumber';
 
 
 
@@ -76,7 +77,8 @@ import { RechercheComponent } from 'src/app/pages/recherche/recherche.component'
     MatInputModule,
     BadgeModule,
     MatDialogModule,
-    DividerModule
+    DividerModule,
+    InputNumberModule
   
   
   ]
