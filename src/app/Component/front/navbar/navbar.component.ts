@@ -27,6 +27,11 @@ export class NavbarComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.articleserveice.affichArticle().subscribe(
+        data=>{
+          this.articles=data;
+        }
+      )
     
     this.cartItemFunc();
     
@@ -174,6 +179,19 @@ export class NavbarComponent implements OnInit {
     },
 ];
 }
+applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    var articlessearch:any[]=[];
+    for(let v of this.articles)
+    {
+      if(v.name.includes(filterValue))
+      {
+        articlessearch.push(v);
+      }
+    }
+    this.articles=articlessearch;
+    console.log(this.articles)
+  }
 affichcattype(categorie:String,type:String){
     this.articleserveice.affichArticleparcategorieType(categorie,type).subscribe(
         data=>{

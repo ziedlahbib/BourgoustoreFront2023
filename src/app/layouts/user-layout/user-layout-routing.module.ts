@@ -4,11 +4,13 @@ import { AffichcategorieComponent } from 'src/app/pages/affichcategorie/affichca
 import { AffichcategorietypeComponent } from 'src/app/pages/affichcategorietype/affichcategorietype.component';
 import { HomeComponent } from 'src/app/pages/home/home.component';
 import { PanierComponent } from 'src/app/pages/panier/panier.component';
+import { RechercheComponent } from 'src/app/pages/recherche/recherche.component';
 
 
 const routes: Routes = [
   { path: 'home',       component: HomeComponent },
   { path: 'panier',       component: PanierComponent },
+  { path: 'recherche',       component: RechercheComponent },
   { path: 'artcileparcategorie',       component: AffichcategorieComponent },
   { path: 'artcileparcategorietype',       component: AffichcategorietypeComponent },
   { path: 'artcileparcategorietype/:cat/:type',       component: AffichcategorietypeComponent }

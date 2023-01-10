@@ -30,6 +30,7 @@ import { PassercommandedialogComponentComponent } from 'src/app/pages/panier/pas
 import {DividerModule} from 'primeng/divider';
 import { AffichcategorieComponent } from 'src/app/pages/affichcategorie/affichcategorie.component';
 import { AffichcategorietypeComponent } from 'src/app/pages/affichcategorietype/affichcategorietype.component';
+import { RechercheComponent } from 'src/app/pages/recherche/recherche.component';
 
 
 
@@ -46,6 +47,7 @@ import { AffichcategorietypeComponent } from 'src/app/pages/affichcategorietype/
     PassercommandedialogComponentComponent,
     AffichcategorieComponent,
     AffichcategorietypeComponent,
+    RechercheComponent,
     
     
     
