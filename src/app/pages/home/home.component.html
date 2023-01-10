@@ -31,7 +31,10 @@
                         <h6 class="mt-0 mb-3">${{product.prix}}</h6>
                         <span [class]="'product-badge status-'+product.name.toLowerCase()">{{product.name}}</span>
                         <div class="car-buttons mt-5">
-                            <p-button type="button" styleClass="p-button p-button-rounded mr-2" icon="pi pi-angle-double-right"></p-button>
+                            <div class="field col-12 md:col-3">
+                                <p-inputNumber [(ngModel)]="value" mode="decimal" [showButtons]="true" inputId="minmax-buttons" [min]="0" [max]="100">
+                                </p-inputNumber>
+                            </div>
                             <p-button type="button" (click)="addtoCart(product)" styleClass="p-button-success p-button-rounded mr-2" icon="pi pi-shopping-cart"></p-button>
                         </div>
                     </div>
@@ -57,7 +60,10 @@
                         <h6 class="mt-0 mb-3">${{product.prix}}</h6>
                         <span [class]="'product-badge status-'+product.name.toLowerCase()">{{product.name}}</span>
                         <div class="car-buttons mt-5">
-                            <p-button type="button" styleClass="p-button p-button-rounded mr-2" icon="pi pi-angle-double-right"></p-button>
+                            <div class="field col-12 md:col-3">
+                                <p-inputNumber [(ngModel)]="value" mode="decimal" [showButtons]="true" inputId="minmax-buttons" [min]="0" [max]="100">
+                                </p-inputNumber>
+                            </div>
                             <p-button type="button" (click)="addtoCart(product)" styleClass="p-button-success p-button-rounded mr-2" icon="pi pi-shopping-cart"></p-button>
                         </div>
                     </div>
@@ -83,7 +89,10 @@
                         <h6 class="mt-0 mb-3">${{product.prix}}</h6>
                         <span [class]="'product-badge status-'+product.name.toLowerCase()">{{product.name}}</span>
                         <div class="car-buttons mt-5">
-                            <p-button type="button" styleClass="p-button p-button-rounded mr-2" icon="pi pi-angle-double-right"></p-button>
+                            <div class="field col-12 md:col-3">
+                                <p-inputNumber [(ngModel)]="value" mode="decimal" [showButtons]="true" inputId="minmax-buttons" [min]="0" [max]="100">
+                                </p-inputNumber>
+                            </div>
                             <p-button type="button" (click)="addtoCart(product)" styleClass="p-button-success p-button-rounded mr-2" icon="pi pi-shopping-cart"></p-button>
                         </div>
                     </div>
@@ -109,7 +118,10 @@
                         <h6 class="mt-0 mb-3">${{product.prix}}</h6>
                         <span [class]="'product-badge status-'+product.name.toLowerCase()">{{product.name}}</span>
                         <div class="car-buttons mt-5">
-                            <p-button type="button" styleClass="p-button p-button-rounded mr-2" icon="pi pi-angle-double-right"></p-button>
+                            <div class="field col-12 md:col-3">
+                                <p-inputNumber [(ngModel)]="value" mode="decimal" [showButtons]="true" inputId="minmax-buttons" [min]="0" [max]="100">
+                                </p-inputNumber>
+                            </div>
                             <p-button type="button" (click)="addtoCart(product)" styleClass="p-button-success p-button-rounded mr-2" icon="pi pi-shopping-cart"></p-button>
                         </div>
                     </div>
@@ -145,12 +157,12 @@
              <p class="card-text" style="color: red;">prix:{{t.prix}}</p>
              <div class="card-body">
                 <div class="field col-12 md:col-3">
-                    <label for="vertical" style="display: block">Vertical</label>
-                    <p-inputNumber [(ngModel)]="value" [showButtons]="true" buttonLayout="vertical" spinnerMode="vertical" inputId="vertical"
-                    decrementButtonClass="p-button-secondary" incrementButtonClass="p-button-secondary" incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus">
-                    </p-inputNumber>
+                    <div class="field col-12 md:col-3">
+                        <p-inputNumber [(ngModel)]="value" mode="decimal" [showButtons]="true" inputId="minmax-buttons" [min]="0" [max]="100">
+                        </p-inputNumber>
+                    </div>
                 </div>
-                <p-button type="button" styleClass="p-button-success p-button-rounded mr-2" icon="pi pi-shopping-cart"></p-button>
+                <p-button type="button" style="display:inline-block" styleClass="p-button-success p-button-rounded mr-2" icon="pi pi-shopping-cart"></p-button>
              </div>
            </div>
          </div>
