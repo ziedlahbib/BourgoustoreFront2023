@@ -20,6 +20,7 @@ export class NavbarComponent implements OnInit {
 
     user:User;
     role:Role;
+    username:String;
     isLoggedIn = false;
   articles:Article[];
   nom="zied"
@@ -39,6 +40,7 @@ export class NavbarComponent implements OnInit {
         data=>{
             this.user=data;
             this.role=data.role;
+            this.username=data.userName;
             console.log(data.role)
         }
      )
