@@ -35,17 +35,12 @@ export class RechercheComponent implements OnInit {
       data=>{
         console.log(data)
         this.value=data.filterValue
-        var imagessearch:Article[]=[];
-    for(let v of this.articles)
-    {
-      if(v.name.includes(data.filterValue))
-      {
-        imagessearch.push(v);
-        
-      }
-    }
-    this.articles=imagessearch;
-    this.articlePagination=this.articles.slice(this.start, this.end);
+        this.articleserveice.affichArticleparName(data.filterValue).subscribe(
+          res=>{
+              this.articles=res;
+              this.articlePagination=this.articles.slice(this.start, this.end);
+          }
+        )
     if(data.filterValue=="")
         this.router.navigate(['/home'])
       }
