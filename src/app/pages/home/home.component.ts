@@ -115,17 +115,12 @@ export class HomeComponent implements OnInit {
 addtoCart(article:Article){
   this.itemsCart=JSON.parse(localStorage.getItem('localCart')|| '[]');
   console.log("article vendu",this.articleForm.value);
-  this.avs.ajoutArticlevendu(this.articleForm.value,article.id).subscribe(
-    data=>{
-      console.log("article vendu",this.articleForm.value);
-      console.log("data",data);
-      this.itemsCart.push(data);
+  let articlev=this.articleForm.value;
+  articlev.article=article;
+        this.itemsCart.push(articlev);
       console.log("sss",this.itemsCart)
       localStorage.setItem('localCart',JSON.stringify(this.itemsCart));
       this.cartNumberFunc();
-
-    }
-  );
   
 
 }
