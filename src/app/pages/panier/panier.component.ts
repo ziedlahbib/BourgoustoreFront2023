@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { ArticleVendu } from 'src/app/model/article-vendu.model';
 import { Article } from 'src/app/model/article.model';
 import { CommandeServiceService } from 'src/app/service/commande-service.service';
 import { PassercommandedialogComponentComponent } from './passercommandedialog-component/passercommandedialog-component.component';
@@ -11,6 +12,9 @@ import { PassercommandedialogComponentComponent } from './passercommandedialog-c
 })
 export class PanierComponent implements OnInit {
 
+  cartItem:ArticleVendu[];
+  cartNumber:number=0;
+  prixtotal:number=0;
   constructor(public dialog: MatDialog,private cs:CommandeServiceService) { }
 
   ngOnInit(): void {
@@ -18,7 +22,7 @@ export class PanierComponent implements OnInit {
     this.calculeprixtotal();
   }
 
-  cartItem:any[];
+
   cartItemFunc(){
       if(localStorage.getItem('localCart')!=null){
           var cartCount=JSON.parse(localStorage.getItem('localCart')||'[]');
@@ -31,10 +35,10 @@ export class PanierComponent implements OnInit {
       
   }
 }
-deleteitem(article:Article){
+deleteitem(articlev:ArticleVendu){
 
-  this.cartItem.splice(this.cartItem.indexOf(article),1);
-  this.prixtotal=this.prixtotal-article.prix;
+  this.cartItem.splice(this.cartItem.indexOf(articlev),1);
+  this.prixtotal=this.prixtotal-articlev.article.prix;
   localStorage.setItem('localCart',JSON.stringify(this.cartItem));
   this.cartNumberFunc();
 }
@@ -45,14 +49,14 @@ delete(){
           this.prixtotal=0;
           this.cartNumberFunc();
 }
-cartNumber:number=0;
+
 cartNumberFunc(){
   var cartValue=JSON.parse(localStorage.getItem('localCart')|| '[]');
   this.cartNumber=cartValue.length;
   console.log(this.cartNumber);
   this.cs.cartSubject.next(this.cartNumber);
 }
-prixtotal:number=0;
+
 calculeprixtotal():number{
   for(let i of this.cartItem){
       this.prixtotal=this.prixtotal+(i.qte*i.article.prix);
