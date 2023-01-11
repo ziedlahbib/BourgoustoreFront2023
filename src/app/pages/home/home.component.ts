@@ -91,15 +91,24 @@ export class HomeComponent implements OnInit {
 }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
-    var imagessearch:any[]=[];
-    for(let v of this.articles)
-    {
-      if(v.name.includes(filterValue))
-      {
-        imagessearch.push(v);
-      }
+    if(filterValue!=""){
+      this.articleserveice.affichArticleparName(filterValue).subscribe(
+        res=>{
+          console.log(res)
+            this.articles=res;
+            this.articlePagination=this.articles.slice(this.start, this.end);
+        }
+      )
+    }else{
+      this.articleserveice.affichArticle().subscribe(
+        data=>{
+          this.articles=data;
+          this.articlePagination=this.articles.slice(this.start, this.end);
+        }
+      )
     }
-    this.articlePagination=imagessearch;
+
+
   }
   paginate(event:PageEvent) {
     let startIndex = event.pageSize * event.pageIndex;
