@@ -21,13 +21,7 @@ export class RechercheComponent implements OnInit {
     private act: ActivatedRoute,private router: Router) { }
 
   ngOnInit(): void {
-    // this.articleserveice.affichArticle().subscribe(
-    //   data=>{
-    //     this.articles=data;
-    //     this.articlePagination=this.articles.slice(this.start, this.end);
-    //   }
-    // )
-   
+
     this.get();
   }
   get(){
