@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Article } from 'src/app/model/article.model';
 import { ArticleServiceService } from 'src/app/service/article-service.service';
 
@@ -18,7 +18,7 @@ export class RechercheComponent implements OnInit {
   articlePagination:Article[];
   constructor(private articleserveice:ArticleServiceService,
     
-    private act: ActivatedRoute) { }
+    private act: ActivatedRoute,private router: Router) { }
 
   ngOnInit(): void {
     this.articleserveice.affichArticle().subscribe(
@@ -44,6 +44,8 @@ export class RechercheComponent implements OnInit {
       }
     }
     this.articlePagination=imagessearch;
+    if(data.filterValue=="")
+        this.router.navigate(['/home'])
       }
     )
   }
