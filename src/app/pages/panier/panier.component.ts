@@ -38,7 +38,7 @@ export class PanierComponent implements OnInit {
 deleteitem(articlev:ArticleVendu){
 
   this.cartItem.splice(this.cartItem.indexOf(articlev),1);
-  this.prixtotal=this.prixtotal-articlev.article.prix;
+  this.prixtotal=this.prixtotal-articlev.article.prix*articlev.qte;
   localStorage.setItem('localCart',JSON.stringify(this.cartItem));
   this.cartNumberFunc();
 }

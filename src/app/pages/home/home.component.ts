@@ -82,7 +82,7 @@ export class HomeComponent implements OnInit {
   initForm() {
 
   this.articleForm = this.formBuilder.group({
-    qte: ['',]
+    qte: ['0',]
 
   });
    this.articleForm.valueChanges.subscribe(
