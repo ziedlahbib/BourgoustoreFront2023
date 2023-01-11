@@ -1,5 +1,8 @@
 
     <div>
+      <h1 *ngIf="articlePagination.length===0" style="font-weight: bold;">
+        no article found
+      </h1>
         <ng-template pTemplate="header">
             <h1 class="glow">--tous les produit--</h1>
         </ng-template>

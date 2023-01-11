@@ -31,6 +31,7 @@ export class RechercheComponent implements OnInit {
         this.value=data.filterValue
         this.articleserveice.affichArticleparName(data.filterValue).subscribe(
           res=>{
+            console.log(res)
               this.articles=res;
               this.articlePagination=this.articles.slice(this.start, this.end);
           }
