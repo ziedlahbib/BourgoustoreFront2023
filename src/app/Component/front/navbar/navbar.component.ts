@@ -1,4 +1,4 @@
-import { AfterContentInit, Component, EventEmitter, Input, NgModule, OnChanges, OnInit, Output, SimpleChange, ViewChild } from '@angular/core';
+import { AfterContentInit, AfterViewInit, Component, EventEmitter, Input, NgModule, OnChanges, OnInit, Output, SimpleChange, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { MenuItem } from 'primeng/api';
 import { MenubarModule } from 'primeng/menubar';
@@ -16,10 +16,10 @@ import { UserServiceService } from 'src/app/service/user-service.service';
     styleUrls: ['./navbar.component.scss']
 })
 
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit,AfterViewInit {
 
     user: User;
-    role: Role;
+    role: string;
     username: String;
     isLoggedIn = false;
     articles: Article[];
@@ -40,16 +40,19 @@ export class NavbarComponent implements OnInit {
             }
         );
     }
-
-    ngOnInit(): void {
+    ngAfterViewInit(): void {
         this.us.getuserbyusername(sessionStorage.authenticatedUser).subscribe(
             data => {
                 this.user = data;
-                this.role = data.role;
+                this.role = data.role.role;
                 this.username = data.userName;
-                console.log(data.role)
+                console.log(data.role.role)
             }
         )
+    }
+
+    ngOnInit(): void {
+
         this.isLoggedIn = this.authenticationService.isUserLoggedIn();
         this.initNavbarUrls()
 
@@ -59,17 +62,7 @@ export class NavbarComponent implements OnInit {
     applyFilter(event: Event) {
         const filterValue = (event.target as HTMLInputElement).value;
         this.router.navigate(['recherche'], { queryParams: { filterValue: filterValue }});
-        console.log(filterValue);
         
-
-        // var articlessearch: any[] = [];
-        // for (let v of this.articles) {
-        //     if (v.name.includes(filterValue)) {
-        //         articlessearch.push(v);
-        //     }
-        // }
-        // this.articles = articlessearch;
-        // console.log(this.articles)
     }
 
   

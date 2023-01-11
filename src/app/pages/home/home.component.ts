@@ -48,34 +48,34 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
 
     
-    // this.articleserveice.affichArticle().subscribe(
-    //   data=>{
-    //     this.articles=data;
-    //     this.articlePagination=this.articles.slice(this.start, this.end);
-    //   }
-    // )
+    this.articleserveice.affichArticle().subscribe(
+      data=>{
+        this.articles=data;
+        this.articlePagination=this.articles.slice(this.start, this.end);
+      }
+    )
     
-    //   this.articleserveice.affichArticleparcategorie("Univers_Gaming").subscribe(
-    //     data=>{
-    //       console.log(data);
-    //       this.ArticleGaming=data;
+      this.articleserveice.affichArticleparcategorie("Univers_Gaming").subscribe(
+        data=>{
+          console.log(data);
+          this.ArticleGaming=data;
 
-    //     }
-    //   )
-    //   this.articleserveice.affichArticleparcategorie("Univers_Telephonie").subscribe(
-    //     data=>{
-    //       console.log(data);
-    //       this.Articletelephonique=data;
+        }
+      )
+      this.articleserveice.affichArticleparcategorie("Univers_Telephonie").subscribe(
+        data=>{
+          console.log(data);
+          this.Articletelephonique=data;
 
-    //     }
-    //   )
-    //   this.articleserveice.affichArticleparcategorie("Univers_Informatique").subscribe(
-    //     data=>{
-    //       console.log(data);
-    //       this.Articleinfoematique=data;
+        }
+      )
+      this.articleserveice.affichArticleparcategorie("Univers_Informatique").subscribe(
+        data=>{
+          console.log(data);
+          this.Articleinfoematique=data;
 
-    //     }
-    //   )
+        }
+      )
       this.initForm();
 
   }
@@ -88,17 +88,7 @@ export class HomeComponent implements OnInit {
    this.articleForm.valueChanges.subscribe(
   data=>{console.log(this.articleForm)}
  )
-}/*
-get(id:String){
-  this.articleserveice.getArticlebyid(id).subscribe(
-    data => {
-
-      this.article = data;
-    this.initForm(data);
-
-    }
-  );
-}*/
+}
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     var imagessearch:any[]=[];

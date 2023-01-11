@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 import { Article } from 'src/app/model/article.model';
 import { ArticleServiceService } from 'src/app/service/article-service.service';
 
@@ -13,16 +13,40 @@ export class RechercheComponent implements OnInit {
 
   start=0;
   end=6;
-  articles:Article[];
+  value:string;
+  articles:Article[]=[];
   articlePagination:Article[];
   constructor(private articleserveice:ArticleServiceService,
     
     private act: ActivatedRoute) { }
 
   ngOnInit(): void {
-    
+    this.articleserveice.affichArticle().subscribe(
+      data=>{
+        this.articles=data;
+        this.articlePagination=this.articles.slice(this.start, this.end);
+      }
+    )
+   
+    this.get();
   }
-
+  get(){
+    this.act.queryParams.subscribe(
+      data=>{
+        console.log(data)
+        this.value=data.filterValue
+        var imagessearch:Article[]=[];
+    for(let v of this.articles)
+    {
+      if(v.name.includes(data.filterValue))
+      {
+        imagessearch.push(v);
+      }
+    }
+    this.articlePagination=imagessearch;
+      }
+    )
+  }
   paginate(event:PageEvent) {
     let startIndex = event.pageSize * event.pageIndex;
     this.start = startIndex;
