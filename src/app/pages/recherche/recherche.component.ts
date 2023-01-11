@@ -15,7 +15,7 @@ export class RechercheComponent implements OnInit {
   end=6;
   value:string;
   articles:Article[]=[];
-  articlePagination:Article[];
+  articlePagination:Article[]=[];
   constructor(private articleserveice:ArticleServiceService,
     
     private act: ActivatedRoute,private router: Router) { }
@@ -29,15 +29,19 @@ export class RechercheComponent implements OnInit {
       data=>{
         console.log(data)
         this.value=data.filterValue
-        this.articleserveice.affichArticleparName(data.filterValue).subscribe(
-          res=>{
-            console.log(res)
-              this.articles=res;
-              this.articlePagination=this.articles.slice(this.start, this.end);
-          }
-        )
-    if(data.filterValue=="")
+        if(data.filterValue=="")
         this.router.navigate(['/home'])
+        else{
+          this.articleserveice.affichArticleparName(data.filterValue).subscribe(
+            res=>{
+              console.log(res)
+                this.articles=res;
+                this.articlePagination=this.articles.slice(this.start, this.end);
+            }
+          )
+        }
+
+
       }
     )
   }
