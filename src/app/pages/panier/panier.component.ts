@@ -55,7 +55,7 @@ cartNumberFunc(){
 prixtotal:number=0;
 calculeprixtotal():number{
   for(let i of this.cartItem){
-      this.prixtotal=this.prixtotal+i.prix;
+      this.prixtotal=this.prixtotal+(i.qte*i.article.prix);
   }
   return this.prixtotal;
 }

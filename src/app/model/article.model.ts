@@ -4,7 +4,7 @@ import { FileDB } from "./file-db.model";
 import { Type } from "./type";
 
 export class Article {
-    id: String;
+    id: number;
     description: String;
     name:String;
     prix: number;

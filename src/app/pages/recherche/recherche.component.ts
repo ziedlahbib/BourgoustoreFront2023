@@ -15,10 +15,12 @@ export class RechercheComponent implements OnInit {
   end=6;
   articles:Article[];
   articlePagination:Article[];
-  constructor(private articleserveice:ArticleServiceService) { }
+  constructor(private articleserveice:ArticleServiceService,
+    
+    private act: ActivatedRoute) { }
 
   ngOnInit(): void {
-
+    
   }
 
   paginate(event:PageEvent) {

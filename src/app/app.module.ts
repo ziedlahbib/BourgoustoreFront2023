@@ -5,33 +5,13 @@ import { AppRoutingModule, routes } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import {AccordionModule} from 'primeng/accordion';     //accordion and accordion tab
+import { AccordionModule } from 'primeng/accordion';     //accordion and accordion tab
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-
-
-
-
-
-
-
-
 
 @NgModule({
   declarations: [
     AppComponent,
-
-
-
-
-
-  
-
-
-  
-    
-    
-    
   ],
   imports: [
     BrowserModule,
@@ -40,10 +20,10 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     NgbModule,
     AccordionModule,
-    RouterModule.forRoot(routes,{
+    RouterModule.forRoot(routes, {
       useHash: true
     }),
-    
+
   ],
   providers: [],
   bootstrap: [AppComponent]

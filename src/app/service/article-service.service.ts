@@ -16,10 +16,16 @@ export class ArticleServiceService {
   getfiledetail="/api/File/filesdetail";
   deletearticleUrl="/api/article/delete-article";
   afichparcaturl="/api/article/get-article-by-categorie/"
-  affichcattypeurl="/api/article/get-article-by-categorie-ET-Type/"
+  affichcattypeurl="/api/article/get-article-by-categorie-ET-Type/";
+  getArticlebyIdurl="/api/article/get-article"
   constructor(private http : HttpClient) { }
+  
   affichArticle() : Observable<Article[]> {
     return this.http.get<Article[]>(this.getArticleUrl);
+    }
+    getArticlebyid(id:number): Observable<Article>{
+      return this.http.get<Article>(`${this.getArticlebyIdurl}/${id}`);
+  
     }
     affichArticleparcategorie(categorie :String) : Observable<Article[]> {
       return this.http.get<Article[]>(`${this.afichparcaturl}/${categorie}`);
@@ -39,7 +45,7 @@ export class ArticleServiceService {
     getFilesdetail(id:Number): Observable<FileDB> {
       return this.http.get<FileDB>(`${this.getfiledetail}/${id}`);
     }
-    affecterfileauarticle(id:String,idf:number,article :Article):Observable<Article>{
+    affecterfileauarticle(id:number,idf:number,article :Article):Observable<Article>{
       return this.http.put<Article>("/api/File/affecter-fileToArticle/"+id+"/"+idf,article);
     }
     deletearticle(id:number): any{

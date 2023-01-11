@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthServiceService } from 'src/app/service/auth-service.service';
 
@@ -10,8 +11,11 @@ import { AuthServiceService } from 'src/app/service/auth-service.service';
 export class LoginComponent implements OnInit {
 
   value: any;
-  username: string;
-  password : string;
+  public loginForm: FormGroup;
+  
+  public username: string;
+  public password : string;
+
   errorMessage = 'Invalid Credentials';
   successMessage: string;
   invalidLogin = false;
@@ -21,9 +25,19 @@ export class LoginComponent implements OnInit {
     private authenticationService: AuthServiceService) { }
 
   ngOnInit(): void {
+    this.initForm();
+  }
+
+  initForm(){
+    this.loginForm = new FormGroup(
+      {
+        username : new FormControl(),
+        password : new FormControl()
+      }
+    )
   }
   handleLogin() {
-    this.authenticationService.authenticationService(this.username, this.password).subscribe((result)=> {
+    this.authenticationService.authenticationService(this.loginForm.value).subscribe((result)=> {
       this.invalidLogin = false;
       this.loginSuccess = true;
       this.successMessage = 'Login Successful.';
@@ -31,6 +45,6 @@ export class LoginComponent implements OnInit {
     }, () => {
       this.invalidLogin = true;
       this.loginSuccess = false;
-    });      
+    });   
   }
 }

@@ -7,7 +7,7 @@
         <ng-template pTemplate="end">
             <i class="pi pi-shopping-cart mr-4 p-text-secondary" routerLink="/panier" pBadge style="font-size: 2rem" value="{{cartItem}}" severity="danger"></i>
             <p-chip label="{{username}}" image="assets/images.png" styleClass="mr-2" (click)="menu.toggle($event)"></p-chip>
-            <p-menu #menu [popup]="true" [model]="item"></p-menu>
+            <p-menu #menu [popup]="true" [model]="profileMenu"></p-menu>
         </ng-template>
     </p-menubar>
  

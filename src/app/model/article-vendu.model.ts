@@ -5,5 +5,5 @@ export class ArticleVendu {
     id: number;
     qte: number;
     article:Article;
-    number:Commande;
+    commande:Commande[];
 }

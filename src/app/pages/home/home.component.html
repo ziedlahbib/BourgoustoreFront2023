@@ -20,27 +20,33 @@
         <ng-template pTemplate="header">
             <h1 class="glow">--BEST SALES--</h1>
         </ng-template>
-        <ng-template let-product pTemplate="item">
-            <div class="product-item">
-                <div class="product-item-content">
-                    <div class="mb-3">
-                        <img src="http://localhost:8089/File/file/{{product.files.id}}" [alt]="product.title" class="product-image" />
-                    </div>
-                    <div>
-                        <h4 class="mb-1">{{product.name}}</h4>
-                        <h6 class="mt-0 mb-3">${{product.prix}}</h6>
-                        <span [class]="'product-badge status-'+product.name.toLowerCase()">{{product.name}}</span>
-                        <div class="car-buttons mt-5">
-                            <div class="field col-12 md:col-3">
-                                <p-inputNumber  mode="decimal" [showButtons]="true" inputId="minmax-buttons" [min]="0" [max]="100">
-                                </p-inputNumber>
+            <ng-template let-product pTemplate="item">
+                <div class="product-item">
+                        <div class="product-item-content">
+                            <div class="mb-3">
+                                <img src="http://localhost:8089/File/file/{{product.files.id}}" [alt]="product.title" class="product-image" />
                             </div>
-                            <p-button type="button" [style]="{margin: '20px'}"  (click)="addtoCart(product)" styleClass="p-button-success p-button-rounded mr-2" icon="pi pi-shopping-cart"></p-button>
+                            <div>
+                                <h4 class="mb-1">{{product.name}}</h4>
+                                <h6 class="mt-0 mb-3">${{product.prix}}</h6>
+                                <span [class]="'product-badge status-'+product.name.toLowerCase()">{{product.name}}</span>
+                                <div class="car-buttons mt-5">
+                                    <form [formGroup]="articleForm">
+                                        
+                                    <div class="field col-12 md:col-3">
+                                        <p-inputNumber  mode="decimal" [showButtons]="true" inputId="minmax-buttons" [min]="0" [max]="100" formControlName="qte">
+                                        </p-inputNumber>
+                                    </div>
+                                    <p-button type="button" [style]="{margin: '20px'}" 
+                                     (click)="addtoCart(product)" styleClass="p-button-success p-button-rounded mr-2" 
+                                     icon="pi pi-shopping-cart">
+                                    </p-button>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
-                    </div>
                 </div>
-            </div>
-        </ng-template>
+            </ng-template>
     </p-carousel>
 </div>
 <!--univers gaming-->

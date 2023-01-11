@@ -14,12 +14,12 @@ export class AuthServiceService {
   public username: string;
   public password: string;
   constructor(private http: HttpClient) { }
-  authenticationService(username: string, password: string) {
+  authenticationService(data) {
     return this.http.get(this.basicauthurl,
-      { headers: { authorization: this.createBasicAuthToken(username, password) } }).pipe(map((res) => {
-        this.username = username;
-        this.password = password;
-        this.registerSuccessfulLogin(username, password);
+      { headers: { authorization: this.createBasicAuthToken(data.username, data.password) } }).pipe(map((res) => {
+        this.username = data.username;
+        this.password = data.password;
+        this.registerSuccessfulLogin(data.username, data.password);
       }));
   }
 

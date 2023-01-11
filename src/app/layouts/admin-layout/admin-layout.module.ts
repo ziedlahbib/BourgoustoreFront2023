@@ -54,8 +54,6 @@ import {MatSelectModule} from '@angular/material/select';
     MatPaginatorModule,
     MatInputModule,
     MatSelectModule
-    
-    
   ]
 })
 export class AdminLayoutModule { }
