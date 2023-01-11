@@ -13,12 +13,14 @@ import { CommandeServiceService } from 'src/app/service/commande-service.service
 })
 export class PassercommandedialogComponentComponent implements OnInit {
 
+
   cmd:Commande = new Commande();
   constructor(public dialogRef: MatDialogRef<PassercommandedialogComponentComponent>,
     private cs:CommandeServiceService,
     @Inject(MAT_DIALOG_DATA) public data: {
       cartItem : ArticleVendu[],
-      userID :number
+      userID :number,
+      prixtotal:number
   },
     private avs :ArticlevenduServiceService,
   ) { }
@@ -27,6 +29,7 @@ export class PassercommandedialogComponentComponent implements OnInit {
   ngOnInit(): void {
 
   }
+
   onNoClick(): void {
     this.dialogRef.close();
   }
@@ -47,5 +50,7 @@ export class PassercommandedialogComponentComponent implements OnInit {
       )
       
     }
+  
+    
   }
 }
