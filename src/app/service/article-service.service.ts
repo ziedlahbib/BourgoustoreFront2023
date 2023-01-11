@@ -15,11 +15,11 @@ export class ArticleServiceService {
   uploadfilef="/api/File/uploadf";
   getfiledetail="/api/File/filesdetail";
   deletearticleUrl="/api/article/delete-article";
-  afichparcaturl="/api/article/get-article-by-categorie/"
+  afichparcaturl="/api/article/get-article-by-categorie/";
+  afichparnameurl="/api/article/get-article-by-name/";
   affichcattypeurl="/api/article/get-article-by-categorie-ET-Type/";
   getArticlebyIdurl="/api/article/get-article"
   constructor(private http : HttpClient) { }
-  
   affichArticle() : Observable<Article[]> {
     return this.http.get<Article[]>(this.getArticleUrl);
     }
@@ -27,6 +27,9 @@ export class ArticleServiceService {
       return this.http.get<Article>(`${this.getArticlebyIdurl}/${id}`);
   
     }
+    affichArticleparName(name :String) : Observable<Article[]> {
+      return this.http.get<Article[]>(`${this.afichparnameurl}/${name}`);
+      }
     affichArticleparcategorie(categorie :String) : Observable<Article[]> {
       return this.http.get<Article[]>(`${this.afichparcaturl}/${categorie}`);
       }
