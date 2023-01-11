@@ -21,10 +21,10 @@
             <h1 class="glow">--BEST SALES--</h1>
         </ng-template>
             <ng-template let-product pTemplate="item">
-                <div class="product-item">
+                <div class="product-item" >
                         <div class="product-item-content">
                             <div class="mb-3">
-                                <img src="http://localhost:8089/File/file/{{product.files.id}}" [alt]="product.title" class="product-image" />
+                                <img src="http://localhost:8089/File/file/{{product.files.id}}" [alt]="product.title" class="product-image" style="height: 100px;" />
                             </div>
                             <div>
                                 <h4 class="mb-1">{{product.name}}</h4>
@@ -59,7 +59,7 @@
             <div class="product-item">
                 <div class="product-item-content">
                     <div class="mb-3">
-                        <img src="http://localhost:8089/File/file/{{product.files.id}}"[alt]="product.name" class="product-image" />
+                        <img src="http://localhost:8089/File/file/{{product.files.id}}"[alt]="product.name" class="product-image" style="height: 100px;" />
                     </div>
                     <div>
                         <h4 class="mb-1">{{product.description}}</h4>
@@ -94,7 +94,7 @@
             <div class="product-item">
                 <div class="product-item-content">
                     <div class="mb-3">
-                        <img src="http://localhost:8089/File/file/{{product.files.id}}"[alt]="product.name" class="product-image" />
+                        <img src="http://localhost:8089/File/file/{{product.files.id}}"[alt]="product.name" class="product-image" style="height: 100px;" />
                     </div>
                     <div>
                         <h4 class="mb-1">{{product.description}}</h4>
@@ -129,7 +129,7 @@
             <div class="product-item">
                 <div class="product-item-content">
                     <div class="mb-3">
-                        <img src="http://localhost:8089/File/file/{{product.files.id}}"[alt]="product.name" class="product-image" />
+                        <img src="http://localhost:8089/File/file/{{product.files.id}}"[alt]="product.name" class="product-image" style="height: 100px;" />
                     </div>
                     <div>
                         <h4 class="mb-1">{{product.description}}</h4>
@@ -175,7 +175,7 @@
        <div class="col mb-4"*ngFor="let t of articlePagination">
          <div class="card h-100" >
            <img  src="http://localhost:8089/File/file/{{t.files.id}}" class="card-img-top" alt="...">
-           <div class="card-body">
+           <div class="card-body" >
              <h5 class="card-title" style="font-weight: bold;font-size: 50px;margin: 50px;">{{t.name}}</h5>
              <p class="card-text " style="color: rgb(63, 108, 108);">description:{{t.description}}</p>
              <p class="card-text " style="color: red;">prix:{{t.prix}}</p>
