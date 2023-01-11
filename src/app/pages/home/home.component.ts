@@ -117,6 +117,7 @@ addtoCart(article:Article){
   console.log("article vendu",this.articleForm.value);
   let articlev=this.articleForm.value;
   articlev.article=article;
+  console.log(articlev)
         this.itemsCart.push(articlev);
       console.log("sss",this.itemsCart)
       localStorage.setItem('localCart',JSON.stringify(this.itemsCart));
