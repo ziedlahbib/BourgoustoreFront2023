@@ -60,7 +60,7 @@
   
           <input class="form-control" type="file" id="formFile" formControlName="file" (change)="selectFile($event);upload()">
         <div class="small text-muted mt-2">Upload your Image</div>
-        <div  *ngIf="file==null" style="color: red;"><a style="font-weight: bold;">&#x2022;</a> required</div>
+        <div  *ngIf="file==null" style="color: red;"><a style="font-weight: bold;">&#x2022;</a> required and name of image must be simple</div>
 
       </div>
     </div>

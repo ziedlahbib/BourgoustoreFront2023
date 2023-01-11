@@ -1,5 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { AfterViewInit, Component, Inject, OnInit } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ArticleVendu } from 'src/app/model/article-vendu.model';
+import { Commande } from 'src/app/model/commande.model';
+import { ArticlevenduServiceService } from 'src/app/service/articlevendu-service.service';
+import { CommandeServiceService } from 'src/app/service/commande-service.service';
+
 
 @Component({
   selector: 'app-passercommandedialog-component',
@@ -8,16 +13,38 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class PassercommandedialogComponentComponent implements OnInit {
 
-  nom:String;
-  prenom:String;
-  address:String;
-  email:String;
-  tel:String;
-  constructor(public dialogRef: MatDialogRef<PassercommandedialogComponentComponent>) { }
+  cmd:Commande = new Commande();
+  constructor(public dialogRef: MatDialogRef<PassercommandedialogComponentComponent>,
+    private cs:CommandeServiceService,
+    @Inject(MAT_DIALOG_DATA) public data: {
+      cartItem : ArticleVendu[],
+      userID :number
+  },
+    private avs :ArticlevenduServiceService,
+  ) { }
+
 
   ngOnInit(): void {
+
   }
   onNoClick(): void {
     this.dialogRef.close();
+  }
+  ajouter(){
+    var idartv :number[]=[];
+    for(let av of this.data.cartItem )
+    {
+      this.avs.ajoutArticlevendu(av,av.article.id).subscribe(
+        data=>{
+          idartv.push(data.id);
+          this.cs.ajoutCommande(this.cmd,idartv,this.data.userID).subscribe(
+            res=>{
+              console.log(res.id);
+            }
+          )
+        }
+      )
+      
+    }
   }
 }

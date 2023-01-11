@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ArticleVendu } from 'src/app/model/article-vendu.model';
-import { Article } from 'src/app/model/article.model';
+import { User } from 'src/app/model/user.model';
+import { AuthServiceService } from 'src/app/service/auth-service.service';
 import { CommandeServiceService } from 'src/app/service/commande-service.service';
+import { UserServiceService } from 'src/app/service/user-service.service';
 import { PassercommandedialogComponentComponent } from './passercommandedialog-component/passercommandedialog-component.component';
 
 @Component({
@@ -10,16 +12,35 @@ import { PassercommandedialogComponentComponent } from './passercommandedialog-c
   templateUrl: './panier.component.html',
   styleUrls: ['./panier.component.scss']
 })
-export class PanierComponent implements OnInit {
+export class PanierComponent implements OnInit,AfterViewInit {
 
+
+  user: User;
+  role: string;
+  username: String;
+  isLoggedIn = false;
   cartItem:ArticleVendu[];
   cartNumber:number=0;
   prixtotal:number=0;
-  constructor(public dialog: MatDialog,private cs:CommandeServiceService) { }
+  constructor(public dialog: MatDialog,private cs:CommandeServiceService,
+    private authenticationService: AuthServiceService,
+    private us: UserServiceService) { }
 
+    
+    ngAfterViewInit(): void {
+      this.us.getuserbyusername(sessionStorage.authenticatedUser).subscribe(
+          data => {
+              this.user = data;
+              this.role = data.role.role;
+              this.username = data.userName;
+              console.log(data.role.role)
+          }
+      )
+  }
   ngOnInit(): void {
     this.cartItemFunc();
     this.calculeprixtotal();
+    this.isLoggedIn = this.authenticationService.isUserLoggedIn();
   }
 
 
@@ -66,10 +87,11 @@ calculeprixtotal():number{
 dialoggg(){
   const dialogRef = this.dialog.open(PassercommandedialogComponentComponent, {
     data: {
-        title: "NWAS NTD"
+        title: "NWAS NTD",
+        cartItem : this.cartItem,
+        userID :this.user.userId
     },
-    width: '600px',
-    height: '300px',
+
     panelClass: 'epsSelectorPanel'
 });
   dialogRef.updatePosition({ top: '170px', left: '500px' });
