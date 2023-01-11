@@ -55,13 +55,20 @@ export class NavbarComponent implements OnInit,AfterViewInit {
 
         this.isLoggedIn = this.authenticationService.isUserLoggedIn();
         this.initNavbarUrls()
-
         this.cartItemFunc();
+        this.us.getuserbyusername(sessionStorage.authenticatedUser).subscribe(
+            data => {
+                this.user = data;
+                this.role = data.role.role;
+                this.username = data.userName;
+            }
+        )
     }
 
     applyFilter(event: Event) {
         const filterValue = (event.target as HTMLInputElement).value;
         this.router.navigate(['recherche'], { queryParams: { filterValue: filterValue }});
+        
         
     }
 
@@ -172,12 +179,6 @@ export class NavbarComponent implements OnInit,AfterViewInit {
                     }
                 ]
             },
-            {
-                label: 'Espace Admin',
-                icon: 'pi pi-th-large',
-                routerLink: '/afficherarticle',
-
-            },
         ];
         this.profileMenu = [
             {
@@ -197,5 +198,14 @@ export class NavbarComponent implements OnInit,AfterViewInit {
             },
         ];
     }
-
+    isAdmin() :boolean{
+    let isa: boolean=true;
+        if(this.role=='CLIENT')
+            { 
+            isa=false
+        }else if(this.role=='ADMIN'){
+            isa=true
+        }
+    return isa
+    }
 }
