@@ -14,6 +14,9 @@ import { CommandeServiceService } from 'src/app/service/commande-service.service
 export class PassercommandedialogComponentComponent implements OnInit {
 
 
+  cartItem:ArticleVendu[];
+  cartNumber:number=0;
+  prixtotal:number=0;
   cmd:Commande = new Commande();
   constructor(public dialogRef: MatDialogRef<PassercommandedialogComponentComponent>,
     private cs:CommandeServiceService,
@@ -44,6 +47,7 @@ export class PassercommandedialogComponentComponent implements OnInit {
             res=>{
               console.log(res.id);
               this.dialogRef.close();
+              this.delete();
             }
           )
         }
@@ -52,5 +56,19 @@ export class PassercommandedialogComponentComponent implements OnInit {
     }
   
     
+  }
+  delete(){
+    localStorage.clear();
+    var cartCount=JSON.parse(localStorage.getItem('localCart')||'[]');
+            this.cartItem=cartCount;
+            this.prixtotal=0;
+            this.cartNumberFunc();
+  }
+  
+  cartNumberFunc(){
+    var cartValue=JSON.parse(localStorage.getItem('localCart')|| '[]');
+    this.cartNumber=cartValue.length;
+    console.log(this.cartNumber);
+    this.cs.cartSubject.next(this.cartNumber);
   }
 }

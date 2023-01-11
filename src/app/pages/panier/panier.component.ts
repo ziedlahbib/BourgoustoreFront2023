@@ -99,7 +99,8 @@ dialoggg(){
 });
   dialogRef.updatePosition({ top: '170px', left: '500px' });
   dialogRef.afterClosed().subscribe(data => {
-    this.delete();
+    this.cartItemFunc();
+    this.prixtotal=0;
 
   });
 }
