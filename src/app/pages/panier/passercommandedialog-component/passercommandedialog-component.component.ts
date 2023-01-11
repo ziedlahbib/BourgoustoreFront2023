@@ -40,6 +40,7 @@ export class PassercommandedialogComponentComponent implements OnInit {
           this.cs.ajoutCommande(this.cmd,idartv,this.data.userID).subscribe(
             res=>{
               console.log(res.id);
+              this.dialogRef.close();
             }
           )
         }
