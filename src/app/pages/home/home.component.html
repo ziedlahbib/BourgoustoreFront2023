@@ -1,7 +1,8 @@
 <div>
-    <p-galleria [value]="articles" [responsiveOptions]="responsiveOptions"    [numVisible]="5" > 
-        <ng-template pTemplate="item" let-item  name="item" ngDefaultControl>
-            <img src="http://localhost:8089/File/file/{{item.files.id}}" style="width: 100%; display: block;height: 400px;" />
+    <p-galleria [value]="articles" [responsiveOptions]="responsiveOptions" [numVisible]="5">
+        <ng-template pTemplate="item" let-item name="item" ngDefaultControl>
+            <img src="http://localhost:8089/File/file/{{item.files.id}}"
+                style="width: 100%; display: block;height: 400px;" />
         </ng-template>
         <ng-template pTemplate="thumbnail" let-item>
             <div class="grid grid-nogutter justify-content-center">
@@ -11,47 +12,51 @@
         <ng-template pTemplate="caption" let-item>
             <h4 style="margin-bottom: .5rem; color: #ffffff;">{{item.name}}</h4>
             <p>{{item.description}}</p>
-            <button pButton  label="En savoir plus" icon="pi pi-arrow-up-right" iconPos="right" class="p-button-success"></button >
+            <button pButton label="En savoir plus" icon="pi pi-arrow-up-right" iconPos="right"
+                class="p-button-success"></button>
         </ng-template>
     </p-galleria>
-</div> 
+</div>
 <div>
-    <p-carousel [value]="articles" [numVisible]="3" [numScroll]="3" [circular]="false" [responsiveOptions]="responsiveOptions">
+    <p-carousel [value]="articles" [numVisible]="3" [numScroll]="3" [circular]="false"
+        [responsiveOptions]="responsiveOptions">
         <ng-template pTemplate="header">
             <h1 class="glow">--BEST SALES--</h1>
         </ng-template>
-            <ng-template let-product pTemplate="item">
-                <div class="product-item" >
-                        <div class="product-item-content">
-                            <div class="mb-3">
-                                <img src="http://localhost:8089/File/file/{{product.files.id}}" [alt]="product.title" class="product-image" style="height: 100px;" />
-                            </div>
-                            <div>
-                                <h4 class="mb-1">{{product.name}}</h4>
-                                <h6 class="mt-0 mb-3">${{product.prix}}</h6>
-                                <span [class]="'product-badge status-'+product.name.toLowerCase()">{{product.name}}</span>
-                                <div class="car-buttons mt-5">
-                                    <form [formGroup]="articleForm">
-                                        
-                                    <div class="field col-12 md:col-3">
-                                        <p-inputNumber  mode="decimal" [showButtons]="true" inputId="minmax-buttons" [min]="0" [max]="100" formControlName="qte">
-                                        </p-inputNumber>
-                                    </div>
-                                    <p-button type="button" [style]="{margin: '20px'}" 
-                                     (click)="addtoCart(product)" styleClass="p-button-success p-button-rounded mr-2" 
-                                     icon="pi pi-shopping-cart">
-                                    </p-button>
-                                    </form>
+        <ng-template let-product pTemplate="item">
+            <div class="product-item">
+                <div class="product-item-content">
+                    <div class="mb-3">
+                        <img src="http://localhost:8089/File/file/{{product.files.id}}" [alt]="product.title"
+                            class="product-image" style="height: 100px;" />
+                    </div>
+                    <div>
+                        <h4 class="mb-1">{{product.name}}</h4>
+                        <h6 class="mt-0 mb-3">${{product.prix}}</h6>
+                        <span [class]="'product-badge status-'+product.name.toLowerCase()">{{product.name}}</span>
+                        <div class="car-buttons mt-5">
+                            <form [formGroup]="articleForm">
+
+                                <div class="field col-12 md:col-3">
+                                    <p-inputNumber mode="decimal" [showButtons]="true" inputId="minmax-buttons"
+                                        [min]="0" [max]="100" formControlName="qte">
+                                    </p-inputNumber>
                                 </div>
-                            </div>
+                                <p-button type="button" [style]="{margin: '20px'}" (click)="addtoCart(product)"
+                                    styleClass="p-button-success p-button-rounded mr-2" icon="pi pi-shopping-cart">
+                                </p-button>
+                            </form>
                         </div>
+                    </div>
                 </div>
-            </ng-template>
+            </div>
+        </ng-template>
     </p-carousel>
 </div>
 <!--univers gaming-->
 <div>
-    <p-carousel [value]="ArticleGaming" [numVisible]="3" [numScroll]="3" [circular]="false" [responsiveOptions]="responsiveOptions">
+    <p-carousel [value]="ArticleGaming" [numVisible]="3" [numScroll]="3" [circular]="false"
+        [responsiveOptions]="responsiveOptions">
         <ng-template pTemplate="header">
             <h1 class="glow">--Univers Gaming--</h1>
         </ng-template>
@@ -59,7 +64,8 @@
             <div class="product-item">
                 <div class="product-item-content">
                     <div class="mb-3">
-                        <img src="http://localhost:8089/File/file/{{product.files.id}}"[alt]="product.name" class="product-image" style="height: 100px;" />
+                        <img src="http://localhost:8089/File/file/{{product.files.id}}" [alt]="product.name"
+                            class="product-image" style="height: 100px;" />
                     </div>
                     <div>
                         <h4 class="mb-1">{{product.description}}</h4>
@@ -67,15 +73,15 @@
                         <span [class]="'product-badge status-'+product.name.toLowerCase()">{{product.name}}</span>
                         <div class="car-buttons mt-5">
                             <form [formGroup]="articleForm">
-                                
-                            <div class="field col-12 md:col-3">
-                                <p-inputNumber  mode="decimal" [showButtons]="true" inputId="minmax-buttons" [min]="0" [max]="100" formControlName="qte">
-                                </p-inputNumber>
-                            </div>
-                            <p-button type="button" [style]="{margin: '20px'}" 
-                             (click)="addtoCart(product)" styleClass="p-button-success p-button-rounded mr-2" 
-                             icon="pi pi-shopping-cart">
-                            </p-button>
+
+                                <div class="field col-12 md:col-3">
+                                    <p-inputNumber mode="decimal" [showButtons]="true" inputId="minmax-buttons"
+                                        [min]="0" [max]="100" formControlName="qte">
+                                    </p-inputNumber>
+                                </div>
+                                <p-button type="button" [style]="{margin: '20px'}" (click)="addtoCart(product)"
+                                    styleClass="p-button-success p-button-rounded mr-2" icon="pi pi-shopping-cart">
+                                </p-button>
                             </form>
                         </div>
                     </div>
@@ -86,7 +92,8 @@
 </div>
 <!--Univers_Telephonie-->
 <div>
-    <p-carousel [value]="Articletelephonique" [numVisible]="3" [numScroll]="3" [circular]="false" [responsiveOptions]="responsiveOptions">
+    <p-carousel [value]="Articletelephonique" [numVisible]="3" [numScroll]="3" [circular]="false"
+        [responsiveOptions]="responsiveOptions">
         <ng-template pTemplate="header">
             <h1 class="glow">--Univers Telephonie--</h1>
         </ng-template>
@@ -94,7 +101,8 @@
             <div class="product-item">
                 <div class="product-item-content">
                     <div class="mb-3">
-                        <img src="http://localhost:8089/File/file/{{product.files.id}}"[alt]="product.name" class="product-image" style="height: 100px;" />
+                        <img src="http://localhost:8089/File/file/{{product.files.id}}" [alt]="product.name"
+                            class="product-image" style="height: 100px;" />
                     </div>
                     <div>
                         <h4 class="mb-1">{{product.description}}</h4>
@@ -102,15 +110,15 @@
                         <span [class]="'product-badge status-'+product.name.toLowerCase()">{{product.name}}</span>
                         <div class="car-buttons mt-5">
                             <form [formGroup]="articleForm">
-                                
-                            <div class="field col-12 md:col-3">
-                                <p-inputNumber  mode="decimal" [showButtons]="true" inputId="minmax-buttons" [min]="0" [max]="100" formControlName="qte">
-                                </p-inputNumber>
-                            </div>
-                            <p-button type="button" [style]="{margin: '20px'}" 
-                             (click)="addtoCart(product)" styleClass="p-button-success p-button-rounded mr-2" 
-                             icon="pi pi-shopping-cart">
-                            </p-button>
+
+                                <div class="field col-12 md:col-3">
+                                    <p-inputNumber mode="decimal" [showButtons]="true" inputId="minmax-buttons"
+                                        [min]="0" [max]="100" formControlName="qte">
+                                    </p-inputNumber>
+                                </div>
+                                <p-button type="button" [style]="{margin: '20px'}" (click)="addtoCart(product)"
+                                    styleClass="p-button-success p-button-rounded mr-2" icon="pi pi-shopping-cart">
+                                </p-button>
                             </form>
                         </div>
                     </div>
@@ -121,7 +129,8 @@
 </div>
 <!--Univers_Informatique-->
 <div>
-    <p-carousel [value]="Articleinfoematique" [numVisible]="3" [numScroll]="3" [circular]="false" [responsiveOptions]="responsiveOptions">
+    <p-carousel [value]="Articleinfoematique" [numVisible]="3" [numScroll]="3" [circular]="false"
+        [responsiveOptions]="responsiveOptions">
         <ng-template pTemplate="header">
             <h1 class="glow">--Univers Informatique--</h1>
         </ng-template>
@@ -129,7 +138,8 @@
             <div class="product-item">
                 <div class="product-item-content">
                     <div class="mb-3">
-                        <img src="http://localhost:8089/File/file/{{product.files.id}}"[alt]="product.name" class="product-image" style="height: 100px;" />
+                        <img src="http://localhost:8089/File/file/{{product.files.id}}" [alt]="product.name"
+                            class="product-image" style="height: 100px;" />
                     </div>
                     <div>
                         <h4 class="mb-1">{{product.description}}</h4>
@@ -137,15 +147,15 @@
                         <span [class]="'product-badge status-'+product.name.toLowerCase()">{{product.name}}</span>
                         <div class="car-buttons mt-5">
                             <form [formGroup]="articleForm">
-                                
-                            <div class="field col-12 md:col-3">
-                                <p-inputNumber  mode="decimal" [showButtons]="true" inputId="minmax-buttons" [min]="0" [max]="100" formControlName="qte">
-                                </p-inputNumber>
-                            </div>
-                            <p-button type="button" [style]="{margin: '20px'}" 
-                             (click)="addtoCart(product)" styleClass="p-button-success p-button-rounded mr-2" 
-                             icon="pi pi-shopping-cart">
-                            </p-button>
+
+                                <div class="field col-12 md:col-3">
+                                    <p-inputNumber mode="decimal" [showButtons]="true" inputId="minmax-buttons"
+                                        [min]="0" [max]="100" formControlName="qte">
+                                    </p-inputNumber>
+                                </div>
+                                <p-button type="button" [style]="{margin: '20px'}" (click)="addtoCart(product)"
+                                    styleClass="p-button-success p-button-rounded mr-2" icon="pi pi-shopping-cart">
+                                </p-button>
                             </form>
                         </div>
                     </div>
@@ -157,50 +167,51 @@
 <!--tous les produits-->
 <div>
 
-        <h1 class="glow">--tous les produit--</h1>
+    <h1 class="glow">--tous les produit--</h1>
 
     <div style="padding:40px ;">
         <div class="example-header" style="margin-left: 50px">
 
-              <span class="p-input-icon-left">
+            <span class="p-input-icon-left">
                 <i class="pi pi-search"></i>
                 <input type="text" pInputText placeholder="Search" (keyup)="applyFilter($event)" />
             </span>
-   
+
         </div>
         <br>
         <br>
         <br>
-      <div class="row row-cols-1 row-cols-md-3">
-       <div class="col mb-4"*ngFor="let t of articlePagination">
-         <div class="card h-100" >
-           <img  src="http://localhost:8089/File/file/{{t.files.id}}" class="card-img-top" alt="...">
-           <div class="card-body" >
-             <h5 class="card-title" style="font-weight: bold;font-size: 50px;margin: 50px;">{{t.name}}</h5>
-             <p class="card-text " style="color: rgb(63, 108, 108);">description:{{t.description}}</p>
-             <p class="card-text " style="color: red;">prix:{{t.prix}}</p>
-             <div class="card-body">
-                <div class="car-buttons mt-5">
-                    <form [formGroup]="articleForm">
-                        
-                    <div class="field col-12 md:col-3">
-                        <p-inputNumber  mode="decimal" [showButtons]="true" inputId="minmax-buttons" [min]="0" [max]="100" formControlName="qte">
-                        </p-inputNumber>
+        <div class="row row-cols-1 row-cols-md-3">
+            <div class="col mb-4" *ngFor="let t of articlePagination">
+                <div class="card h-100">
+                    <img src="http://localhost:8089/File/file/{{t.files.id}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title" style="font-weight: bold;font-size: 50px;margin: 50px;">{{t.name}}</h5>
+                        <p class="card-text " style="color: rgb(63, 108, 108);">description:{{t.description}}</p>
+                        <p class="card-text " style="color: red;">prix:{{t.prix}}</p>
+                        <div class="card-body">
+                            <div class="car-buttons mt-5">
+                                <form [formGroup]="articleForm">
+
+                                    <div class="field col-12 md:col-3">
+                                        <p-inputNumber mode="decimal" [showButtons]="true" inputId="minmax-buttons"
+                                            [min]="0" [max]="100" formControlName="qte">
+                                        </p-inputNumber>
+                                    </div>
+                                    <p-button type="button" [style]="{margin: '20px'}" (click)="addtoCart(t)"
+                                        styleClass="p-button-success p-button-rounded mr-2" icon="pi pi-shopping-cart">
+                                    </p-button>
+                                </form>
+                            </div>
+                        </div>
                     </div>
-                    <p-button type="button" [style]="{margin: '20px'}" 
-                     (click)="addtoCart(t)" styleClass="p-button-success p-button-rounded mr-2" 
-                     icon="pi pi-shopping-cart">
-                    </p-button>
-                    </form>
                 </div>
-             </div>
-           </div>
-         </div>
-       </div>
-      </div>
-             <div class="col-12" *ngIf="articlePagination">
-               <mat-paginator [length]="articles.length" [pageSize]="6" [pageSizeOptions]="[6, 12, 18]" (page)="paginate($event)">      
-               </mat-paginator>     
-             </div>
-      </div>
+            </div>
+        </div>
+        <div class="col-12" *ngIf="articlePagination">
+            <mat-paginator [length]="articles.length" [pageSize]="6" [pageSizeOptions]="[6, 12, 18]"
+                (page)="paginate($event)">
+            </mat-paginator>
+        </div>
+    </div>
 </div>

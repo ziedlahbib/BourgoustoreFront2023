@@ -1,36 +1,37 @@
+<div>
+  <h1 *ngIf="articlePagination.length===0" style="font-weight: bold;">
+    no article found
+  </h1>
+  <ng-template pTemplate="header">
+    <h1 class="glow">--tous les produit--</h1>
+  </ng-template>
+  <div style="padding:40px ;">
+    <div class="row row-cols-1 row-cols-md-3">
+      <div class="col mb-4" *ngFor="let t of articlePagination">
+        <div class="card h-100">
+          <img src="http://localhost:8089/File/file/{{t.files.id}}" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title" style="font-weight: bold;font-size: 50px;margin: 50px;">{{t.name}}</h5>
+            <p class="card-text" style="color: rgb(63, 108, 108);">description:{{t.description}}</p>
+            <p class="card-text" style="color: red;">prix:{{t.prix}}</p>
+            <div class="card-body">
+              <p-button type="button" styleClass="p-button p-button-rounded mr-2"
+                icon="pi pi-angle-double-right"></p-button>
+              <p-button type="button" styleClass="p-button-success p-button-rounded mr-2"
+                icon="pi pi-shopping-cart"></p-button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12" *ngIf="articlePagination">
+      <mat-paginator [length]="articles.length" [pageSize]="6" [pageSizeOptions]="[6, 12, 18]"
+        (page)="paginate($event)">
 
-    <div>
-      <h1 *ngIf="articlePagination.length===0" style="font-weight: bold;">
-        no article found
-      </h1>
-        <ng-template pTemplate="header">
-            <h1 class="glow">--tous les produit--</h1>
-        </ng-template>
-        <div style="padding:40px ;">
-          <div class="row row-cols-1 row-cols-md-3">
-           <div class="col mb-4"*ngFor="let t of articlePagination">
-             <div class="card h-100" >
-               <img  src="http://localhost:8089/File/file/{{t.files.id}}" class="card-img-top" alt="...">
-               <div class="card-body">
-                 <h5 class="card-title" style="font-weight: bold;font-size: 50px;margin: 50px;">{{t.name}}</h5>
-                 <p class="card-text" style="color: rgb(63, 108, 108);">description:{{t.description}}</p>
-                 <p class="card-text" style="color: red;">prix:{{t.prix}}</p>
-                 <div class="card-body">
-                    <p-button type="button" styleClass="p-button p-button-rounded mr-2" icon="pi pi-angle-double-right"></p-button>
-                    <p-button type="button" styleClass="p-button-success p-button-rounded mr-2" icon="pi pi-shopping-cart"></p-button>
-                 </div>
-               </div>
-             </div>
-           </div>
-          </div>
-                 <div class="col-12" *ngIf="articlePagination">
-                   <mat-paginator [length]="articles.length" [pageSize]="6" [pageSizeOptions]="[6, 12, 18]" (page)="paginate($event)">
-          
-                   </mat-paginator>
-          
-                 </div>
-          
-          
-          </div>
+      </mat-paginator>
+
     </div>
 
+
+  </div>
+</div>

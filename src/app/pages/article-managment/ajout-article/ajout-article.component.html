@@ -1,71 +1,72 @@
-
-
 <div style="margin-left: 150px;margin-top: 50px;">
-    <form [formGroup]="articleform">
-      <div class="form-group row">
-        <span class="p-float-label">
-          <input id="float-input-invalid" type="text" pInputText formControlName="name" class="ng-invalid ng-dirty"> 
-          <label *ngIf="  articleform.get('name').hasError('required')" for="float-input-invalid">nom</label>
+  <form [formGroup]="articleform">
+    <div class="form-group row">
+      <span class="p-float-label">
+        <input id="float-input-invalid" type="text" pInputText formControlName="name" class="ng-invalid ng-dirty">
+        <label *ngIf="  articleform.get('name').hasError('required')" for="float-input-invalid">nom</label>
       </span>
-      </div>
-      <br>
-      <br>
-        <div class="form-group row">
+    </div>
+    <br>
+    <br>
+    <div class="form-group row">
+      <span class="p-float-label">
+        <input id="float-input-invalid" type="text" pInputText formControlName="description"
+          class="ng-invalid ng-dirty">
+        <label *ngIf="  articleform.get('description').hasError('required')"
+          for="float-input-invalid">description</label>
+      </span>
+    </div>
+    <br>
+    <br>
+    <div class="form-group row">
+      <div class="col-10">
         <span class="p-float-label">
-          <input id="float-input-invalid" type="text" pInputText formControlName="description" class="ng-invalid ng-dirty"> 
-          <label *ngIf="  articleform.get('description').hasError('required')" for="float-input-invalid">description</label>
-        </span>
-      </div>
-      <br>
-      <br>
-      <div class="form-group row">
-        <div class="col-10">
-         <span class="p-float-label">
-          <input id="float-input-invalid" type="text" pInputText formControlName="prix" class="ng-invalid ng-dirty"> 
+          <input id="float-input-invalid" type="text" pInputText formControlName="prix" class="ng-invalid ng-dirty">
           <label *ngIf="  articleform.get('prix').hasError('required')" for="float-input-invalid">prix</label>
-          <label *ngIf="  articleform.get('prix').hasError('pattern')" for="float-input-invalid">must a number example 99.99</label>
+          <label *ngIf="  articleform.get('prix').hasError('pattern')" for="float-input-invalid">must a number example
+            99.99</label>
         </span>
-        </div>
       </div>
-      <br>
-      <br>
-      <div class="form-group row">
-        <div>
-          <mat-form-field appearance="fill">
-            <mat-label>categorie</mat-label>
-            <mat-select id="categorie" formControlName="categorie">
-              <mat-option *ngFor="let c of categorie | keyvalue" [value]="c.value" >
-                {{c.value}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-        </div>
+    </div>
+    <br>
+    <br>
+    <div class="form-group row">
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>categorie</mat-label>
+          <mat-select id="categorie" formControlName="categorie">
+            <mat-option *ngFor="let c of categorie | keyvalue" [value]="c.value">
+              {{c.value}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
       </div>
-      <div class="form-group row">
-        <div>
-          <mat-form-field appearance="fill">
-            <mat-label>type</mat-label>
-            <mat-select id="type" formControlName="type">
-              <mat-option *ngFor="let t of type | keyvalue" [value]="t.value">
-                {{t.value}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-        </div>
+    </div>
+    <div class="form-group row">
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>type</mat-label>
+          <mat-select id="type" formControlName="type">
+            <mat-option *ngFor="let t of type | keyvalue" [value]="t.value">
+              {{t.value}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
       </div>
+    </div>
 
-        
-      <div class="form-group row">
-        <div class="col-md-9 pe-5">
-  
-          <input class="form-control" type="file" id="formFile" formControlName="file" (change)="selectFile($event);upload()">
+
+    <div class="form-group row">
+      <div class="col-md-9 pe-5">
+
+        <input class="form-control" type="file" id="formFile" formControlName="file"
+          (change)="selectFile($event);upload()">
         <div class="small text-muted mt-2">Upload your Image</div>
-        <div  *ngIf="file==null" style="color: red;"><a style="font-weight: bold;">&#x2022;</a> required and name of image must be simple</div>
+        <div *ngIf="file==null" style="color: red;"><a style="font-weight: bold;">&#x2022;</a> required and name of
+          image must be simple</div>
 
       </div>
     </div>
-   </form>
-      <button type="submit" class="btn btn-primary" (click)="ajouter()" [disabled]="articleform.invalid" >submit</button>
+  </form>
+  <button type="submit" class="btn btn-primary" (click)="ajouter()" [disabled]="articleform.invalid">submit</button>
 </div>
-
-  
