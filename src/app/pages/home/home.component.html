@@ -1,12 +1,12 @@
 <div>
     <p-galleria [value]="articles" [responsiveOptions]="responsiveOptions" [numVisible]="5">
         <ng-template pTemplate="item" let-item name="item" ngDefaultControl>
-            <img src="http://localhost:8089/File/file/{{item.files.id}}"
+            <img src="api/File/file/{{item.files.id}}"
                 style="width: 100%; display: block;height: 400px;" />
         </ng-template>
         <ng-template pTemplate="thumbnail" let-item>
             <div class="grid grid-nogutter justify-content-center">
-                <img src="http://localhost:8089/File/file/{{item.files.id}}" style="display: block;height: 100px;" />
+                <img src="api/File/file/{{item.files.id}}" style="display: block;height: 100px;" />
             </div>
         </ng-template>
         <ng-template pTemplate="caption" let-item>
@@ -27,7 +27,7 @@
             <div class="product-item">
                 <div class="product-item-content">
                     <div class="mb-3">
-                        <img src="http://localhost:8089/File/file/{{product.files.id}}" [alt]="product.title"
+                        <img src="api/File/file/{{product.files.id}}" [alt]="product.title"
                             class="product-image" style="height: 100px;" />
                     </div>
                     <div>
@@ -64,7 +64,7 @@
             <div class="product-item">
                 <div class="product-item-content">
                     <div class="mb-3">
-                        <img src="http://localhost:8089/File/file/{{product.files.id}}" [alt]="product.name"
+                        <img src="api/File/file/{{product.files.id}}" [alt]="product.name"
                             class="product-image" style="height: 100px;" />
                     </div>
                     <div>
@@ -101,7 +101,7 @@
             <div class="product-item">
                 <div class="product-item-content">
                     <div class="mb-3">
-                        <img src="http://localhost:8089/File/file/{{product.files.id}}" [alt]="product.name"
+                        <img src="api/File/file/{{product.files.id}}" [alt]="product.name"
                             class="product-image" style="height: 100px;" />
                     </div>
                     <div>
@@ -138,7 +138,7 @@
             <div class="product-item">
                 <div class="product-item-content">
                     <div class="mb-3">
-                        <img src="http://localhost:8089/File/file/{{product.files.id}}" [alt]="product.name"
+                        <img src="api/File/file/{{product.files.id}}" [alt]="product.name"
                             class="product-image" style="height: 100px;" />
                     </div>
                     <div>
@@ -184,7 +184,7 @@
         <div class="row row-cols-1 row-cols-md-3">
             <div class="col mb-4" *ngFor="let t of articlePagination">
                 <div class="card h-100">
-                    <img src="http://localhost:8089/File/file/{{t.files.id}}" class="card-img-top" alt="...">
+                    <img src="api/File/file/{{t.files.id}}" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title" style="font-weight: bold;font-size: 50px;margin: 50px;">{{t.name}}</h5>
                         <p class="card-text " style="color: rgb(63, 108, 108);">description:{{t.description}}</p>

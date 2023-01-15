@@ -9,9 +9,11 @@ import { AccordionModule } from 'primeng/accordion';     //accordion and accordi
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 
+
 @NgModule({
   declarations: [
     AppComponent,
+
   ],
   imports: [
     BrowserModule,

@@ -32,6 +32,9 @@ import { AffichcategorieComponent } from 'src/app/pages/affichcategorie/affichca
 import { AffichcategorietypeComponent } from 'src/app/pages/affichcategorietype/affichcategorietype.component';
 import { RechercheComponent } from 'src/app/pages/recherche/recherche.component';
 import {InputNumberModule} from 'primeng/inputnumber';
+import { PaymentComponent } from 'src/app/pages/payment/payment.component';
+import {HttpClientModule} from '@angular/common/http'
+import {HttpClient} from '@angular/common/http'
 
 
 
@@ -49,12 +52,13 @@ import {InputNumberModule} from 'primeng/inputnumber';
     AffichcategorieComponent,
     AffichcategorietypeComponent,
     RechercheComponent,
-    
+    PaymentComponent,
     
     
   ],
   imports: [
     CommonModule,
+    HttpClientModule,
     UserLayoutRoutingModule,
     FormsModule,
     ReactiveFormsModule,
