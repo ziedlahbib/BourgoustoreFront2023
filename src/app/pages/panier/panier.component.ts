@@ -91,12 +91,14 @@ dialoggg(){
         cartItem : this.cartItem,
         userID :this.user.userId,
         prixtotal:this.prixtotal,
-        cartItemFunc:this.cartItemFunc()
+       
 
     },
 
+    
     panelClass: 'epsSelectorPanel'
 });
+
   dialogRef.updatePosition({ top: '170px', left: '500px' });
   dialogRef.afterClosed().subscribe(data => {
     this.cartItemFunc();

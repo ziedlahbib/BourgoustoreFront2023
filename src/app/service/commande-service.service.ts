@@ -12,7 +12,7 @@ export class CommandeServiceService {
 
   addcommandeUrl="/api/commande/add-Commande";
   constructor(private http : HttpClient) { }
-  ajoutCommande(cmd :Commande,article:number[],iduser:number): Observable<Commande>{
+  ajoutCommande(cmd :Commande,article:number[],iduser:Number): Observable<Commande>{
     return this.http.post<Commande>(`${this.addcommandeUrl}/${article}/${iduser}`,cmd);
   }
   cartSubject = new Subject<any>();
