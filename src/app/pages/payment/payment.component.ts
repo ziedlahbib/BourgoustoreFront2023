@@ -8,7 +8,7 @@ import {
 import { loadStripe } from "@stripe/stripe-js/pure"
 
 import  { NgForm } from "@angular/forms"
-//import { AngularStripeService } from '@fireflysemantics/angular-stripe-service'
+
 
 
 @Component({
@@ -27,21 +27,12 @@ export class PaymentComponent implements OnInit,AfterViewInit, OnDestroy {
   cardHandler = this.onChange.bind(this);
   error: string;
   constructor(private cd: ChangeDetectorRef,
-    //private stripeService:AngularStripeService,
     private http : HttpClient) { }
   ngOnDestroy(): void {
     this.card.removeEventListener('change', this.cardHandler);
     this.card.destroy();
   }
    ngAfterViewInit(): void{
-    // this.stripeService.setPublishableKey('pk_test_51MQWvFLBHOF0pYRLryT0sBIYvYLFvJCMQ4tDvla4B4D5jcpZDPjVaaE7FAY5ZsCIPbN0EudiRbYaD478zaiHPbrw00sm0MjpKi').then(
-    //   stripe=> {
-    //     this.stripe = stripe;
-    // const elements = stripe.elements();    
-    // this.card = elements.create('card');
-    // this.card.mount(this.cardInfo.nativeElement);
-    // this.card.addEventListener('change', this.cardHandler);
-    //});
     this.stripemeth();
 }
 
