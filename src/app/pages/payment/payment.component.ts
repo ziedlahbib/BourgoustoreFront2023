@@ -33,19 +33,26 @@ export class PaymentComponent implements OnInit,AfterViewInit, OnDestroy {
     this.card.removeEventListener('change', this.cardHandler);
     this.card.destroy();
   }
-  ngAfterViewInit(): void {
-    this.stripeService.setPublishableKey('pk_test_51MQWvFLBHOF0pYRLryT0sBIYvYLFvJCMQ4tDvla4B4D5jcpZDPjVaaE7FAY5ZsCIPbN0EudiRbYaD478zaiHPbrw00sm0MjpKi').then(
-      stripe=> {
-        this.stripe = stripe;
-    const elements = stripe.elements();    
+  async ngAfterViewInit(): Promise<void> {
+    // this.stripeService.setPublishableKey('pk_test_51MQWvFLBHOF0pYRLryT0sBIYvYLFvJCMQ4tDvla4B4D5jcpZDPjVaaE7FAY5ZsCIPbN0EudiRbYaD478zaiHPbrw00sm0MjpKi').then(
+    //   stripe=> {
+    //     this.stripe = stripe;
+    // const elements = stripe.elements();    
+    // this.card = elements.create('card');
+    // this.card.mount(this.cardInfo.nativeElement);
+    // this.card.addEventListener('change', this.cardHandler);
+    //});
+    loadStripe.setLoadParameters({ advancedFraudSignals: false })
+    const stripe = await loadStripe('pk_test_51MQWvFLBHOF0pYRLryT0sBIYvYLFvJCMQ4tDvla4B4D5jcpZDPjVaaE7FAY5ZsCIPbN0EudiRbYaD478zaiHPbrw00sm0MjpKi');
+    this.stripe = stripe;
+    const elements = stripe.elements();
     this.card = elements.create('card');
     this.card.mount(this.cardInfo.nativeElement);
-    this.card.addEventListener('change', this.cardHandler);
-    });
-
-  }
+    this.card.addEventListener('change', this.cardHandler)
+}
 
   ngOnInit(): void {
+    
   }
 
   onChange({ error }) {
