@@ -35,6 +35,8 @@ import {InputNumberModule} from 'primeng/inputnumber';
 import { PaymentComponent } from 'src/app/pages/payment/payment.component';
 import {HttpClientModule} from '@angular/common/http'
 import {HttpClient} from '@angular/common/http'
+import { SidenavFrontComponent } from 'src/app/Component/front/sidenav-front/sidenav-front.component';
+import {PanelMenuModule} from 'primeng/panelmenu';
 
 
 
@@ -46,6 +48,7 @@ import {HttpClient} from '@angular/common/http'
     UserLayoutComponent,
     NavbarComponent,
     FooterComponent,
+    SidenavFrontComponent,
     HomeComponent,
     PanierComponent,
     PassercommandedialogComponentComponent,
@@ -82,7 +85,8 @@ import {HttpClient} from '@angular/common/http'
     BadgeModule,
     MatDialogModule,
     DividerModule,
-    InputNumberModule
+    InputNumberModule,
+    PanelMenuModule
   
   
   ]

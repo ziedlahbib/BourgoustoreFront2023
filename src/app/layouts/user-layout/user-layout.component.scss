@@ -5,8 +5,16 @@
     text-align:center;
     }
     #main {
-    margin:auto;
-    }
+        margin:auto;
+        }
+        #menu  {
+        float:left;
+        width:245px;
+        }
+        #contenu {
+        margin-left:245px;
+        width: 1200px;
+        }
 
     #footer {
 
